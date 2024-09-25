@@ -10,6 +10,7 @@ import {Category} from './Category'
 import {Announcement} from './Announcement'
 import {UpperFooter} from './upperFooter'
 import {Arrival} from './Arrival'
+import { AboutSection } from './About'
 export {
     Appbar,
     Caroseul,
@@ -22,5 +23,7 @@ export {
     Category,
     Announcement,
     UpperFooter,
-    Arrival
+    Arrival,
+    AboutSection,
+    
 }

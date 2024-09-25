@@ -11,9 +11,9 @@ import footer from "@/components/Images/footer1.png";
 import img1 from "@/components/Images/product1.png";
 import Image from "next/image";
  
-export function UpperFooter({title,subtitle}) {
+export function UpperFooter({title,subtitle,customStyle,target}) {
   return (
-    <Card className="mt-6 w-fit flex flex-col items-center justify-center bg-none shadow-none">
+    <Card className={`mt-6 w-contain flex flex-col items-center justify-center bg-none shadow-none + ${customStyle}`}>
       <CardBody className="flex flex-col items-center justify-center">
       <Avatar
         src="https://docs.material-tailwind.com/img/face-2.jpg"
@@ -21,6 +21,10 @@ export function UpperFooter({title,subtitle}) {
         withBorder={true}
         className="p-0.5"
       />
+
+        <Typography variant="h3" color="blue-gray" className="mt-2 font-black text-4xl  myfont">
+       {target}
+        </Typography>
         <Typography variant="h4" color="blue-gray" className="mb-2 font-black myfont">
        {title}
         </Typography>

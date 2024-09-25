@@ -11,14 +11,14 @@ export function CarouselDefault() {
         height={300}
         width={500}
         alt="image 1"
-        className="h-64 md:h-80 lg:h-96  w-full object-contain"
+        className="h-64 md:h-80 lg:h-96  w-full "
       />
       <Image
         src={img2}
         height={300}
         width={500}
         alt="image 2"
-        className="h-64 md:h-80 lg:h-96  w-full object-contain"
+        className="h-64 md:h-80 lg:h-96  w-full "
       />
       <Image
         src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
