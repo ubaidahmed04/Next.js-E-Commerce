@@ -11,6 +11,7 @@ import {Announcement} from './Announcement'
 import {UpperFooter} from './upperFooter'
 import {Arrival} from './Arrival'
 import { AboutSection } from './About'
+import {Contact} from './Contact'
 export {
     Appbar,
     Caroseul,
@@ -25,5 +26,6 @@ export {
     UpperFooter,
     Arrival,
     AboutSection,
-    
+    Contact
+
 }
