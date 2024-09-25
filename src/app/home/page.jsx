@@ -1,7 +1,6 @@
 "use client"
 import { CarouselDefault, Title, Category, ProductCard, CardDefault,Announcement,UpperFooter,Arrival } from '@/components'
 import React from 'react'
-import { HiArrowSmRight, HiArrowSmLeft } from "react-icons/hi";
 import Category1 from "@/components/Images/Category1.png";
 import Category2 from "@/components/Images/Category2.png";
 import Category3 from "@/components/Images/Category3.png";
