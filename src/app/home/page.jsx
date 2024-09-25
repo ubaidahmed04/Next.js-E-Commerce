@@ -2,7 +2,7 @@
 import { CarouselDefault, Title, Category, ProductCard, CardDefault,Announcement,UpperFooter,Arrival } from '@/components'
 import React from 'react'
 import Category1 from "@/components/Images/Category1.png";
-import Category2 from "@/components/Images/Category2.png";
+import Categort from '@/components/Images/Category2.png'
 import Category3 from "@/components/Images/Category3.png";
 import Category4 from "@/components/Images/Category4.png";
 import Product1 from "@/components/Images/product1.png";
@@ -58,7 +58,7 @@ const Home = () => {
         <Title title='Categories' Subtitle='Browse By Category' />
         <span className='flex gap-4 flex-wrap items-center justify-center'>
           <Category productName="Phone" url={Category1} />
-          <Category productName="Computers" url={Category2} />
+          <Category productName="Computer" url={Categort} />
           <Category productName="Watch" url={Category3} />
           <Category productName="Camera" url={Category4} />
           <Category productName="Gaming" url={Category6} />
