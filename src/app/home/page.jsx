@@ -18,6 +18,7 @@ import Product10 from "@/components/Images/product10.png";
 import Product11 from "@/components/Images/product11.png";
 import Category6 from "@/components/Images/Category6.png";
 import { Button } from '@material-tailwind/react';
+import Link from 'next/link';
 
 const Home = () => {
   return (
@@ -81,9 +82,11 @@ const Home = () => {
           <CardDefault url={Product5} title='product 1' price1={1200} price2={1500} />
         </span>
         <span className='py-5 flex items-center justify-center'>
+          <Link href={'/allproduct'}>
           <Button size="lg" className='text-center bg-secondary'>
             View All Products
           </Button>
+          </Link>
         </span>
         {/* New Arrival section */}
         <Title title='Featured' Subtitle='New Arrivals' />
