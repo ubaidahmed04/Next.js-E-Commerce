@@ -7,7 +7,11 @@ import {
     Typography,
     Textarea
   } from "@material-tailwind/react";
-   
+  import { z } from 'zod';
+  const schema = z.object({
+    name: z.string().min(1, "Name is required").max(50, "Name is too long"),
+    email: z.string().email("Invalid email address"),
+  });
   export function ContactForm() {
     return (
        <Card color="transparent"  shadow={false}>

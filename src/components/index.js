@@ -12,6 +12,7 @@ import {UpperFooter} from './upperFooter'
 import {Arrival} from './Arrival'
 import { AboutSection } from './About'
 import {Contact} from './Contact'
+import {ProductDetail} from './ProductDetail'
 export {
     Appbar,
     Caroseul,
@@ -26,6 +27,7 @@ export {
     UpperFooter,
     Arrival,
     AboutSection,
-    Contact
+    Contact,
+    ProductDetail
 
 }

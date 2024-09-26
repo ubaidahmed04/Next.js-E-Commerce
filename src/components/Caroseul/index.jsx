@@ -5,7 +5,7 @@ import img2 from "@/components/Images/caroseul2.jpg";
 import Image from "next/image";
 export function CarouselDefault() {
   return (
-    <Carousel transition={{ duration: 1 }} className="rounded-xl h-1/2 bg-[#C9C9C9]">
+    <Carousel transition={{ duration: 1 }} loop={true} autoplay={true} className="rounded-xl h-1/2 bg-[#C9C9C9]">
       <Image
         src={img1}
         height={300}
