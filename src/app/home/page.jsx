@@ -2,7 +2,7 @@
 import { CarouselDefault, Title, Category, ProductCard, CardDefault,Announcement,UpperFooter,Arrival } from '@/components'
 import React from 'react'
 import Category1 from "@/components/Images/Category1.png";
-import Category2 from "@/components/Images/Category2.png"
+import Category2 from "@/components/Images/category2.png"
 import Category3 from "@/components/Images/Category3.png";
 import Category4 from "@/components/Images/Category4.png";
 import Product1 from "@/components/Images/product1.png";
