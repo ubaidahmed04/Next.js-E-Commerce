@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Appbar,Footer } from '@/components'
 import logo from '@/components/Images/logo.png'
+import { Providers } from "@/GlobalRedux/Provider";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -37,11 +38,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
+        <Providers>
         <Appbar/>
         <main className="flex-grow max-w-screen-2xl  w-full h-full mx-auto">
         {children}
         </main>
         <Footer/>
+        </Providers>
       </body>
     </html>
   );
