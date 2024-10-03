@@ -11,7 +11,7 @@ import {
 export const Contact = () => {
   return (
     <div >
-        <div className='grid grid-cols-1 md:grid-cols-2  py-8 mx-auto'>
+        <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center md:justify-items-start  py-8 mx-auto'>
             <span >
             <Card className="mt-6 w-96 shadow-lg">
       <CardBody className='flex flex-col gap-4'>

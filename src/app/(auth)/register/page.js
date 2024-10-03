@@ -20,7 +20,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="rounded-3xl border border-stroke w-full h-[80vh]   bg-[#D3D8DC] flex items-center justify-center shadow-lg shadow-gray-500">
+      <div className="rounded-3xl border border-stroke w-full h-[80vh]   bg-[#e6e8eb] flex items-center justify-center shadow-lg shadow-gray-500">
         <div className="flex flex-wrap items-center justify-center w-full h-full ">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 py-17.5 text-center">

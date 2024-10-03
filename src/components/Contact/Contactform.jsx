@@ -2,7 +2,6 @@
 import {
   Card,
   Input,
-  Checkbox,
   Button,
   Typography,
   Textarea
@@ -10,32 +9,49 @@ import {
 
 export function ContactForm() {
   return (
-    <Card color="transparent" shadow={false}>
-      <Typography variant="h4" color="blue-gray">
+    <Card className="p-8 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
+      <Typography variant="h3" color="blue-gray" className="text-center mb-6 font-bold">
         Contact Us
       </Typography>
+      <Typography color="gray" className="text-center mb-8">
+        Have any questions? We'd love to hear from you. Please fill out the form below.
+      </Typography>
 
-      <form className="p-4">
-        <div className="flex flex-col gap-16 ">
-          <span >
-            <Input variant="outlined" label="Name" type="text" placeholder="Name" />
-          </span>
-          <span>
-            <Input variant="outlined" type="email" label="Email" placeholder="Email" />
-          </span>
-          <span>
-            <Input variant="outlined" type="phone" label="Phone" placeholder="Phone" />
-          </span>
-          <span className="col-span-1">
-            <Textarea label="Message" />
-          </span>
+      <form className="space-y-6">
+        <div className="flex flex-col gap-6">
+          <Input 
+            variant="outlined" 
+            label="Name" 
+            type="text" 
+            placeholder="Your Name" 
+            className="rounded-lg shadow-sm"
+          />
+          <Input 
+            variant="outlined" 
+            type="email" 
+            label="Email" 
+            placeholder="Your Email" 
+            className="rounded-lg shadow-sm"
+          />
+          <Input 
+            variant="outlined" 
+            type="phone" 
+            label="Phone" 
+            placeholder="Your Phone" 
+            className="rounded-lg shadow-sm"
+          />
+          <Textarea 
+            label="Message" 
+            // placeholder="Your Message" 
+            className="rounded-lg shadow-sm"
+          />
         </div>
 
-        <span className=" flex justify-end">
-          <Button className="mt-6 w-fit bg-secondary px-4 text-end">
-            Send Massage
+        <div className="flex justify-end mt-8">
+          <Button className="bg-secondary text-white rounded-lg px-6 py-3">
+            Send Message
           </Button>
-        </span>
+        </div>
       </form>
     </Card>
   );

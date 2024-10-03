@@ -96,8 +96,8 @@ export function Appbar() {
         color="blue-gray"
         className="p-1 myfont"
       >
-        <Link href="/register" className={`${pathName==='/register'?'text-secondary underline fontbold translate-x-1':''} flex items-center`}>
-          Signup
+        <Link href="/signin" className={`${pathName==='/register'?'text-secondary underline fontbold translate-x-1':''} flex items-center`}>
+          SignIn
         </Link>
       </Typography>
     </ul>
