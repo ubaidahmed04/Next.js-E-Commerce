@@ -7,8 +7,6 @@ import {
   Button,
   Avatar,
 } from "@material-tailwind/react";
-import footer from "@/components/Images/footer1.png";
-import img1 from "@/components/Images/product1.png";
 import Image from "next/image";
  
 export function UpperFooter({title,subtitle,customStyle,target}) {
@@ -22,10 +20,10 @@ export function UpperFooter({title,subtitle,customStyle,target}) {
         className="p-0.5"
       />
 
-        <Typography variant="h3" color="blue-gray" className="mt-2 font-black text-4xl  myfont">
+        <Typography variant="h3" color="blue-gray" className="mt-2 fontbold text-4xl  myfont">
        {target}
         </Typography>
-        <Typography variant="h4" color="blue-gray" className="mb-2 font-black myfont">
+        <Typography variant="h4" color="blue-gray" className="mb-2 fontbold myfont">
        {title}
         </Typography>
         <Typography variant="h6" className="myfont">

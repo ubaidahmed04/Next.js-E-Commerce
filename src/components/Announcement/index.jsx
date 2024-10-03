@@ -26,19 +26,19 @@ import { Button } from '@material-tailwind/react';
         <span className='text-2xl md:text-4xl text-white'>Enhance Your Music Experience</span>
         <span className='flex gap-2 items-center  text-white '>
           <span className='flex flex-col text-center justify-center bg-white text-black rounded-full p-2'>
-            <span className='font-bold'>days</span>
+            <span className='fontbold'>days</span>
             <span className='font-black text-xl md:text-2xl '>03</span>
           </span>
           <span className='flex flex-col  text-center justify-center bg-white text-black rounded-full p-2'>
-            <span className='font-bold'>Hours</span>
+            <span className='fontbold'>Hours</span>
             <span className='font-black text-xl md:text-2xl '>12</span>
           </span>
           <span className='flex flex-col  text-center justify-center bg-white text-black rounded-full p-2'>
-            <span className='font-bold'>Minutes</span>
+            <span className='fontbold'>Minutes</span>
             <span className='font-black text-xl md:text-2xl '>03</span>
           </span>
           <span className='flex flex-col  text-center justify-center bg-white text-black rounded-full p-2'>
-            <span className='font-bold'>Seconds</span>
+            <span className='fontbold'>Seconds</span>
             <span className='font-black text-xl md:text-2xl '>03 </span>
           </span>
 

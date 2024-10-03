@@ -1,8 +1,9 @@
 "use client"
 import { Carousel } from "@material-tailwind/react";
-import img1 from "@/components/Images/caroseul.jpg";
-import img2 from "@/components/Images/caroseul2.jpg";
+import img1 from "@/app/public/Images/caroseul.jpg";
+import img2 from "@/app/public/Images/caroseul2.jpg";
 import Image from "next/image";
+import { carosel1 } from "@/app/public/const/base64";
 export function CarouselDefault() {
   return (
     <Carousel transition={{ duration: 1 }} loop={true} autoplay={true} className="rounded-xl h-1/2 bg-[#C9C9C9]">
@@ -11,6 +12,8 @@ export function CarouselDefault() {
         height={300}
         width={500}
         alt="image 1"
+        blurDataURL={carosel1}
+
         className="h-64 md:h-80 lg:h-96  w-full "
       />
       <Image

@@ -11,10 +11,9 @@ import {
   import { FaInstagram } from "react-icons/fa";
   import { FaLinkedinIn } from "react-icons/fa";
   import { BsTwitterX } from "react-icons/bs";
-import About1 from "@/components/Images/about1.png";
 import Image from "next/image";
 
-  export function ProfileCard({url}) {
+ export function ProfileCard({url,base64url}) {
     return (
       <Card className="w-full ">
         <CardHeader
@@ -29,13 +28,14 @@ import Image from "next/image";
             width={300}
             alt="ui/ux review check"
             className="h-48 w-full object-contain"
+            blurDataURL={base64url}
           />
         </CardHeader>
         <CardBody>
-          <Typography variant="h4" color="blue-gray">
+          <Typography variant="h4" color="blue-gray" className="myfont">
           Tom Cruise
           </Typography>
-          <Typography variant="lead" color="gray" className="mt-3 font-normal">
+          <Typography variant="lead" color="gray" className="mt-3 myfont">
           Founder & Chairman
           </Typography>
         </CardBody>
@@ -54,7 +54,7 @@ import Image from "next/image";
               />
             </Tooltip>
           </div>
-          <Typography className="font-normal">January 10</Typography>
+          <Typography className="myfont">January 10</Typography>
         </CardFooter>
       </Card>
     );

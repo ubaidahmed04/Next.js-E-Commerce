@@ -19,6 +19,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { FaRegEdit } from "react-icons/fa";
 import { BiLogOutCircle } from "react-icons/bi";
 import { SlBasket,SlMagnifier } from "react-icons/sl";
+import { usePathname } from 'next/navigation'
 import Link from "next/link";
 const profileMenuItems = [
     {
@@ -37,7 +38,7 @@ const profileMenuItems = [
 export function Appbar() {
   const [openNav, setOpenNav] = React.useState(false);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
- 
+  const pathName = usePathname()
   const closeMenu = () => setIsMenuOpen(false);
  
   React.useEffect(() => {
@@ -55,7 +56,7 @@ export function Appbar() {
         color="blue-gray"
         className="p-1 myfont"
       >
-        <Link href="/home" className="flex items-center">
+        <Link href="/" className={`${pathName==='/'?'text-secondary underline fontbold translate-x-1':''} flex items-center`}>
           Home
         </Link>
       </Typography>
@@ -65,7 +66,17 @@ export function Appbar() {
         color="blue-gray"
         className="p-1 myfont"
       >
-        <Link href="/about" className="flex items-center">
+        <Link href="/products" className={`${pathName==='/products'?'text-secondary underline fontbold translate-x-1':''} flex items-center`}>
+          Products
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 myfont"
+      >
+        <Link href="/about" className={`${pathName==='/about'?'text-secondary underline fontbold translate-x-1':''} flex items-center`}>
           About
         </Link>
       </Typography>
@@ -75,7 +86,7 @@ export function Appbar() {
         color="blue-gray"
         className="p-1 myfont"
       >
-        <Link href="/contact" className="flex items-center">
+        <Link href="/contact" className={`${pathName==='/contact'?'text-secondary underline fontbold translate-x-1':''} flex items-center`}>
           Contact
         </Link>
       </Typography>
@@ -85,7 +96,7 @@ export function Appbar() {
         color="blue-gray"
         className="p-1 myfont"
       >
-        <Link href="/signup" className="flex items-center">
+        <Link href="/register" className={`${pathName==='/register'?'text-secondary underline fontbold translate-x-1':''} flex items-center`}>
           Signup
         </Link>
       </Typography>
@@ -98,7 +109,7 @@ export function Appbar() {
           <Typography
             as="a"
             href="#"
-            className="mr-4 cursor-pointer py-1.5 myfont-bold"
+            className="mr-4 cursor-pointer py-1.5 myfontbold"
           >
            Exclusive
           </Typography>
@@ -110,9 +121,11 @@ export function Appbar() {
           className: "hidden",
         }} icon={<SlMagnifier />} />
           </span>
-          <span className="hidden lg:block">
-          <SlBasket/>
+          <Link href={'/addCart'}>
+          <span className="hidden lg:block cursor-pointer">
+          <SlBasket size={30} />
           </span>
+          </Link>
 
           <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end"   >
          
@@ -155,7 +168,7 @@ export function Appbar() {
               <Typography
                 as="span"
                 variant="small"
-                className="font-normal"
+                className="myfont"
                 color={isLastItem ? "red" : "inherit"}
               >
                 <Link href={`${isLastItem}?'/login'?"/signup"`}>
@@ -221,7 +234,7 @@ export function Appbar() {
               <Typography
                 as="span"
                 variant="small"
-                className="font-normal"
+                className="myfont"
                 color={isLastItem ? "red" : "inherit"}
               >
                 {label}

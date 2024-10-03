@@ -6,7 +6,6 @@ import {
     CardBody,
     CardFooter,
     Typography,
-    Button,
   } from "@material-tailwind/react";
   import { IoCallOutline } from "react-icons/io5";
 export const Contact = () => {

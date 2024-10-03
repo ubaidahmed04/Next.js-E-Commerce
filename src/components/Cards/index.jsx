@@ -8,6 +8,7 @@ import {
   Button
 } from "@material-tailwind/react";
 import Image from "next/image";
+import Link from "next/link";
 
 function StarIcon() {
   return (
@@ -26,9 +27,10 @@ function StarIcon() {
   );
 }
 
-export function CardDefault({ url, title, price1, price2 }) {
+export function CardDefault({ url, title, price1, price2, navigate }) {
   return (
     <Card className="min-w-full max-w-[14rem] shadow-lg">
+      <Link href={`/products/${navigate}`}>
       <CardHeader floated={false} color="blue-gray " className="group relative">
         <Image
           height={200}
@@ -74,13 +76,13 @@ export function CardDefault({ url, title, price1, price2 }) {
           color="blue-gray"
           className="flex items-center gap-1.5 font-medium text-lg"
         >
-          <span className="text-secondary font-bold myfont">{`Rs.${price1}`}</span>
+          <span className="text-secondary fontbold myfont">{`Rs.${price1}`}</span>
           <del className="text-gray-700 mr-2 myfont">{`Rs.${price2}`}</del>
         </Typography>
 
         <Typography
           color="blue-gray"
-          className="flex items-center gap-1.5 font-normal"
+          className="flex items-center gap-1.5 myfont"
         >
           <StarIcon />
           <StarIcon />
@@ -90,6 +92,7 @@ export function CardDefault({ url, title, price1, price2 }) {
           (35)
         </Typography>
       </CardBody>
+      </Link>
     </Card>
   );
 }

@@ -13,6 +13,7 @@ import {Arrival} from './Arrival'
 import { AboutSection } from './About'
 import {Contact} from './Contact'
 import {ProductDetail} from './ProductDetail'
+import { AddCart } from './AddtoCart'
 export {
     Appbar,
     Caroseul,
@@ -28,6 +29,7 @@ export {
     Arrival,
     AboutSection,
     Contact,
-    ProductDetail
+    ProductDetail,
+    AddCart
 
 }
