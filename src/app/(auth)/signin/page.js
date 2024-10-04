@@ -2,15 +2,14 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
 import { BiHide, BiShow } from "react-icons/bi";
-import Image from "next/image";
 import { Button, Input } from "@material-tailwind/react";
 import { FaRegUser } from "react-icons/fa6";
-import {Loading} from '@/components'
-import Logo from '@/app/public/Images/logo.png'
-import SignInImage from '@/app/public/Images/signin.jpg'
 import { LoginSkeleton } from "../Skeleton";
 const SignIn = () => {
   const router = useRouter()
+  const HomePage = () =>{
+    router.push("/")
+  }
   const [showPassword, setShowPassword] = useState(false);
   const tooglePassword = () => {
     setShowPassword(!showPassword)
@@ -192,6 +191,7 @@ const SignIn = () => {
                 variant="outlined"
                   type="submit"
                   className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white bg-secondary transition hover:bg-opacity-90"
+                  onClick={HomePage}
                 >
                   SignIn
                 </Button>
