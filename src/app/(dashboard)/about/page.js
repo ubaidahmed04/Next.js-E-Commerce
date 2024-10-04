@@ -1,11 +1,12 @@
 import { Varieties } from '@/components'
-import React from 'react'
+import React, { Suspense } from 'react'
 import {AboutSection}  from '@/components'
+import AboutSectionSkeleton from './AboutSkeleton'
 const About = () => {
   return (
-    <div>
+    <Suspense fallback={<AboutSectionSkeleton/>}>
       <AboutSection/>
-    </div>
+    </Suspense>
   )
 }
 

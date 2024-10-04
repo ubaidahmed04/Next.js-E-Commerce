@@ -1,12 +1,14 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
 import { BiHide, BiShow } from "react-icons/bi";
 import Image from "next/image";
 import { Button, Input } from "@material-tailwind/react";
 import { FaRegUser } from "react-icons/fa6";
+import {Loading} from '@/components'
 import Logo from '@/app/public/Images/logo.png'
 import SignInImage from '@/app/public/Images/signin.jpg'
+import { LoginSkeleton } from "../Skeleton";
 const SignIn = () => {
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +20,7 @@ const SignIn = () => {
 
 
   return (
-    <>
+    <Suspense fallback={<LoginSkeleton/>}>
       <div className="rounded-3xl border border-stroke w-full h-[80vh]   bg-[#e6e8eb] flex items-center justify-center shadow-lg shadow-gray-500">
         <div className="flex flex-wrap items-center justify-center w-full h-full ">
           <div className="hidden w-full xl:block xl:w-1/2">
@@ -200,7 +202,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-    </>
+    </Suspense>
   );
 };
 

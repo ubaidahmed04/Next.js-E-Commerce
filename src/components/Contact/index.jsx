@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { Suspense } from 'react'
 import { ContactForm } from './Contactform'
 import {
     Card,
@@ -8,9 +8,10 @@ import {
     Typography,
   } from "@material-tailwind/react";
   import { IoCallOutline } from "react-icons/io5";
+import { ContactSkeleton } from './ContactSkeleton';
 export const Contact = () => {
   return (
-    <div >
+    <Suspense fallback={<ContactSkeleton/>} >
         <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center md:justify-items-start  py-8 mx-auto'>
             <span >
             <Card className="mt-6 w-96 shadow-lg">
@@ -57,6 +58,6 @@ export const Contact = () => {
                 <ContactForm/>
             </span>
         </div>
-    </div>
+    </Suspense>
   )
 }

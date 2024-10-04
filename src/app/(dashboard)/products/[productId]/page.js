@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import {ProductDetail} from '@/components'
 import Product1 from "@/app/public/Images/product1.png";
 import Product2 from "@/app/public/Images/product2.png";
@@ -11,6 +11,7 @@ import Product8 from "@/app/public/Images/product8.png";
 import Product9 from "@/app/public/Images/product9.png";
 import Product10 from "@/app/public/Images/product10.png";
 import Product11 from "@/app/public/Images/product11.png";
+import ProductDetailSkeleton from './ProductDetailSkeleton';
 const products = {
   product1: { title: 'Product 1', price1: 1200, price2: 1500, imgUrl: Product1 },
   product2: { title: 'Product 2', price1: 1100, price2: 1400, imgUrl: Product2 },
@@ -28,9 +29,9 @@ const ProductDetails = ({params }) => {
   const { productId } = params;
   const product = products[productId];
   return (
-    <div>
+    <Suspense fallback={<ProductDetailSkeleton/>}>
        <ProductDetail url={product.imgUrl} title={product.title} price={product.price1}/> 
-    </div>
+    </Suspense>
   )
 }
 

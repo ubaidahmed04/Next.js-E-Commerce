@@ -14,6 +14,7 @@ import { AboutSection } from './About'
 import {Contact} from './Contact'
 import {ProductDetail} from './ProductDetail'
 import { AddCart } from './AddtoCart'
+import {Loader} from './Loading'
 export {
     Appbar,
     Caroseul,
@@ -30,6 +31,7 @@ export {
     AboutSection,
     Contact,
     ProductDetail,
-    AddCart
+    AddCart,
+    Loader
 
 }

@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { Suspense } from 'react'
 import Product1 from "@/app/public/Images/product1.png";
 import Product2 from "@/app/public/Images/product2.png";
 import Product3 from "@/app/public/Images/product3.png";
@@ -13,9 +13,11 @@ import Product10 from "@/app/public/Images/product10.png";
 import Product11 from "@/app/public/Images/product11.png";
 import { CardDefault } from '@/components'
 import Link from 'next/link';
+import { ProductSkeleton } from './productSkeleton';
 
 const Product = () => {
   return (
+    <Suspense fallback={<ProductSkeleton/>}>
     <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4'>
       {/* <Link href={`/products/product5`}> */}
       <CardDefault url={Product5} navigate={'/product5'} title='product 5' price1={1200} price2={1500} />
@@ -34,6 +36,7 @@ const Product = () => {
 
      
     </div>
+    </Suspense>
   )
 }
 

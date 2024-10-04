@@ -4,7 +4,6 @@ import { Stepper, Step, Button, Card, Input } from "@material-tailwind/react";
 import { BsCreditCard2Front } from "react-icons/bs";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoBagAddOutline } from "react-icons/io5";
-
 import Product1 from "@/app/public/Images/product1.png";
 import Product2 from "@/app/public/Images/product2.png";
 import Image from "next/image";
@@ -23,10 +22,8 @@ export function StepperCard() {
           <div className="mt-8 w-full">
             <h2 className="text-xl font-bold mb-4">Your Cart</h2>
             <div className="space-y-4 w-full">
-  {/* Product 1 */}
   <Card className="p-6 w-full h-full flex items-center bg-white shadow-md rounded-lg space-x-6">
   <div className="flex-shrink-0">
-    {/* Product Image */}
     <Image
       width={100}
       height={100}
@@ -36,7 +33,6 @@ export function StepperCard() {
     />
   </div>
 
-  {/* Product Details */}
   <div className="flex flex-col justify-between">
     <p className="text-lg font-bold text-gray-800">Product 1</p>
     <p className="text-gray-500">$50</p>
@@ -44,10 +40,8 @@ export function StepperCard() {
   </div>
 </Card>
 
-  {/* Product 2 */}
   <Card className="p-6 w-full h-full flex items-center bg-white shadow-md rounded-lg space-x-6">
   <div className="flex-shrink-0">
-    {/* Product Image */}
     <Image
       width={100}
       height={100}
@@ -57,7 +51,6 @@ export function StepperCard() {
     />
   </div>
 
-  {/* Product Details */}
   <div className="flex flex-col justify-between">
     <p className="text-lg font-bold text-gray-800">Product 2</p>
     <p className="text-gray-500">$30</p>

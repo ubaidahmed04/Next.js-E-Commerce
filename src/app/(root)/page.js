@@ -1,6 +1,6 @@
 "use client"
-import { CarouselDefault, Title, Category, ProductCard, CardDefault,Announcement,UpperFooter,Arrival } from '@/components'
-import React from 'react'
+import { CarouselDefault, Title, Category, ProductCard,Announcement,UpperFooter, } from '@/components'
+import React, { lazy, Suspense } from 'react'
 import Category1 from "@/app/public/Images/Category1.png";
 import Category2 from "@/app/public/Images/category2.png"
 import Category3 from "@/app/public/Images/Category3.png";
@@ -19,9 +19,13 @@ import Product11 from "@/app/public/Images/product11.png";
 import Category6 from "@/app/public/Images/Category6.png";
 import { Button } from '@material-tailwind/react';
 import Link from 'next/link';
+import { DashboardSkeleton } from './dashboardSkeleton';
+const CardDefault = lazy(() => import('@/components/Cards').then(module => ({ default: module.CardDefault })));
+const Arrival = lazy(() => import('@/components/Arrival').then(module => ({ default: module.Arrival })));
 
 const Home = () => {
   return (
+    <Suspense fallback={<DashboardSkeleton/>}>
     <div className='py-4'>
       <CarouselDefault />
       <div className='px-4'>
@@ -101,6 +105,7 @@ const Home = () => {
       </div>
 
     </div>
+    </Suspense>
   )
 }
 

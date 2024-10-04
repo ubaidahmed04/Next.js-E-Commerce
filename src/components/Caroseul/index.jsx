@@ -1,7 +1,8 @@
 "use client"
 import { Carousel } from "@material-tailwind/react";
-import img1 from "@/app/public/Images/caroseul.jpg";
-import img2 from "@/app/public/Images/caroseul2.jpg";
+import img1 from "@/app/public/Images/carousel2.jpg";
+import img2 from "@/app/public/Images/carousel1.jpg";
+import img3 from "@/app/public/Images/carousel3.jpg";
 import Image from "next/image";
 import { carosel1 } from "@/app/public/const/base64";
 export function CarouselDefault() {
@@ -13,7 +14,6 @@ export function CarouselDefault() {
         width={500}
         alt="image 1"
         blurDataURL={carosel1}
-
         className="h-64 md:h-80 lg:h-96  w-full "
       />
       <Image
@@ -24,7 +24,7 @@ export function CarouselDefault() {
         className="h-64 md:h-80 lg:h-96  w-full "
       />
       <Image
-        src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+        src={img3}
         alt="image 3"
         height={300}
         width={500}
