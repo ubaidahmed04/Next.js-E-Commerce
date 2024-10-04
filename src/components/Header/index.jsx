@@ -108,7 +108,7 @@ export function Appbar() {
         <div className="flex items-center justify-between text-blue-gray-900 ">
           <Typography
             as="a"
-            href="#"
+            href="/"
             className="mr-4 cursor-pointer py-1.5 myfontbold"
           >
            Exclusive

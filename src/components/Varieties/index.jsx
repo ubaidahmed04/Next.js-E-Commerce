@@ -1,8 +1,8 @@
 "use client";
 import React, { useRef } from "react";
 import Slider from "react-slick";
-import img1 from "@/components/Images/caroseul.jpg";
-import img2 from "@/components/Images/caroseul2.jpg";
+import img1 from "@/app/public/Images/carousel1.jpg";
+import img2 from "@/app/public/Images/carousel2.jpg";
 import Image from "next/image";
 import { HiArrowSmRight,HiArrowSmLeft } from "react-icons/hi";
 

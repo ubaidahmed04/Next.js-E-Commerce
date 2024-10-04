@@ -30,7 +30,6 @@ const SignIn = () => {
               <p className="2xl:px-20">
                 Please Sign in to access your resources.
               </p>
-
               <span className="mt-15 inline-block">
                 <svg
                   width="350"
@@ -152,20 +151,15 @@ const SignIn = () => {
                     fill="#1C2434"
                   />
                 </svg>
-           
               </span>
             </div>
           </div>
 
           <div className="w-full flex items-center flex-col gap-8 rounded-r-lg border-stroke bg-slate-300 dark:border-strokedark xl:w-1/2 xl:border-l-2">
-            {/* <Image src={Logo} height={100} width={100} alt="signin logo" className="lg:hidden" /> */}
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                 Sign In to Portal
               </h2>
-
-
               <div className="mb-4">
                 <label className="mb-2.5 block font-medium text-black dark:text-white">
                   Email
@@ -173,7 +167,6 @@ const SignIn = () => {
                 <div className="w-full">
                   <Input label="Enter Your Email" icon={<FaRegUser/>} />
                 </div>
-                
               </div>
               <div className="mb-4">
                 <label className="mb-2.5 block font-medium text-black dark:text-white">
@@ -182,10 +175,7 @@ const SignIn = () => {
                 <div className="w-full">
                   <Input type={showPassword ? "text" : "password"} label="Enter Your Email" icon={showPassword ? <BiShow size={25} onClick={tooglePassword} /> : <BiHide size={25} onClick={tooglePassword}  />}  />
                 </div>
-               
               </div>
-
-
               <div className="mb-5">
                 <Button
                 variant="outlined"

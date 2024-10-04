@@ -1,10 +1,10 @@
 "use client"
 import Image from 'next/image'
 import React from 'react'
-import Arrival1 from "@/components/Images/arrival1.png";
-import Arrival2 from "@/components/Images/arrival2.png";
-import Arrival3 from "@/components/Images/arrival3.png";
-import Arrival4 from "@/components/Images/arrival4.png";
+import Arrival1 from "@/app/public/Images/arrival1.png";
+import Arrival2 from "@/app/public/Images/arrival2.png";
+import Arrival3 from "@/app/public/Images/arrival3.png";
+import Arrival4 from "@/app/public/Images/arrival4.png";
 
 export const Arrival = () => {
   return (
