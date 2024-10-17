@@ -1,6 +1,6 @@
 "use client"
 import { CarouselDefault, Title, Category, ProductCard,Announcement,UpperFooter, } from '@/components'
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import Category1 from "@/app/public/Images/Category1.png";
 import Category2 from "@/app/public/Images/category2.png"
 import Category3 from "@/app/public/Images/Category3.png";
@@ -24,8 +24,20 @@ const CardDefault = lazy(() => import('@/components/Cards').then(module => ({ de
 const Arrival = lazy(() => import('@/components/Arrival').then(module => ({ default: module.Arrival })));
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 10);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (loading) {
+    return <DashboardSkeleton />;
+  }
   return (
-    <Suspense fallback={<DashboardSkeleton/>}>
     <div className='py-4'>
       <CarouselDefault />
       <div className='px-4'>
@@ -105,7 +117,6 @@ const Home = () => {
       </div>
 
     </div>
-    </Suspense>
   )
 }
 
