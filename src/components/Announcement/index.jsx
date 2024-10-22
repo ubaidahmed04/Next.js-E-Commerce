@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import React from 'react'
-import img2 from "@/components/Images/herosection.png";
+import img2 from "@/app/public/Images/herosection.png";
 import { Button } from '@material-tailwind/react';
 
  export const Announcement = () => {

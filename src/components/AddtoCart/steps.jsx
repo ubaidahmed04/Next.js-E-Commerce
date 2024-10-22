@@ -88,7 +88,7 @@ export function StepperCard() {
                   <Input label="CVV" />
                 </div>
               </Card>
-              <Button color="green" className="bg-secondary" fullWidth>
+              <Button color="green" className="bg-secondary" >
                 Confirm Payment
               </Button>
             </div>

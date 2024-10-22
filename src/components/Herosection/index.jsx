@@ -55,6 +55,7 @@ export function Caroseul() {
         </div>
         <div className="image-wrapper  w-full overflow-hidden">
           <Image height={400} layout="responsive" width={800} src={img3}  objectFit="cover"
+          <Image height={400} layout="responsive" width={800} src={img3}  objectFit="cover"
             className="w-full" alt="image 1"/>
         </div>
         <div className="image-wrapper  w-full overflow-hidden">

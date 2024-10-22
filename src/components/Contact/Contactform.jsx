@@ -14,7 +14,7 @@ export function ContactForm() {
         Contact Us
       </Typography>
       <Typography color="gray" className="text-center mb-8">
-        Have any questions? We'd love to hear from you. Please fill out the form below.
+        Have any questions&#63; We&aposd; love to hear from you Please fill out the form below &#46;
       </Typography>
 
       <form className="space-y-6">

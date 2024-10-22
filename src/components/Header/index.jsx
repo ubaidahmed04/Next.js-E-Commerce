@@ -108,10 +108,10 @@ export function Appbar() {
         <div className="flex items-center justify-between text-blue-gray-900 ">
           <Typography
             as="a"
-            href="#"
-            className="mr-4 cursor-pointer py-1.5 myfontbold"
+            href="/"
+            className="mr-4 cursor-pointer text-xl font-bold py-1.5 myfontbold"
           >
-           Exclusive
+           ShopWeb
           </Typography>
           <div className="mr-4 hidden lg:block">{navList}</div>
           <div className="flex items-center gap-4">

@@ -2,12 +2,9 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
 import { BiHide, BiShow } from "react-icons/bi";
-import Image from "next/image";
 import { Button, Input } from "@material-tailwind/react";
 import { FaRegUser } from "react-icons/fa6";
 import { MdOutlineMail } from "react-icons/md";
-import Logo from '@/app/public/Images/logo.png'
-import SignInImage from '@/app/public/Images/signin.jpg'
 import { LoginSkeleton } from "../Skeleton";
 const Register = () => {
   const router = useRouter()
@@ -159,7 +156,6 @@ const Register = () => {
           </div>
 
           <div className="w-full flex items-center flex-col gap-8 rounded-r-lg border-stroke bg-slate-300 dark:border-strokedark xl:w-1/2 xl:border-l-2">
-            {/* <Image src={Logo} height={100} width={100} alt="Register logo" className="lg:hidden" /> */}
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
 
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">

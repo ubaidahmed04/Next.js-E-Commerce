@@ -44,7 +44,7 @@ export function CardDefault({ url, title, price1, price2, navigate }) {
         <Button
           size="md"
           className="absolute bottom-0 left-0 right-0 opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-in-out w-full h-12 bg-secondary text-white"
-          fullWidth={true}
+          // fullwidth={true}
         >
           Add to Cart
         </Button>
