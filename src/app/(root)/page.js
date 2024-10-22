@@ -20,7 +20,8 @@ import Category6 from "@/app/public/Images/Category6.png";
 import { Button } from '@material-tailwind/react';
 import Link from 'next/link';
 import { DashboardSkeleton } from './dashboardSkeleton';
-const CardDefault = lazy(() => import('@/components/Cards').then(module => ({ default: module.CardDefault })));
+// const CardDefault = lazy(() => import('@/components/Cards').then(module => ({ default: module.CardDefault })));
+const ShowCard = lazy(() => import('@/components/ShowCard').then(module => ({ default: module.ShowCard })));
 const Arrival = lazy(() => import('@/components/Arrival').then(module => ({ default: module.Arrival })));
 
 const Home = () => {
@@ -65,10 +66,10 @@ const Home = () => {
         </span>
         <span className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-3 justify-items-center gap-2'>
 
-          <CardDefault url={Product1} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product2} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product3} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product4} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product1} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product2} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product3} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product4} title='product 1' price1={1200} price2={1500} />
         </span>
         {/* categories section */}
 
@@ -87,15 +88,15 @@ const Home = () => {
         </span>
         {/* This month sales section */}
         <Title title='Our Products' Subtitle='Explore Our Products' />
-        <span className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-3 justify-items-center gap-2'>
-          <CardDefault url={Product5} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product6} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product7} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product8} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product9} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product10} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product11} title='product 1' price1={1200} price2={1500} />
-          <CardDefault url={Product5} title='product 1' price1={1200} price2={1500} />
+        <span className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-3 justify-items-center gap-2'>
+          <ShowCard url={Product5} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product6} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product7} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product8} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product9} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product10} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product11} title='product 1' price1={1200} price2={1500} />
+          <ShowCard url={Product5} title='product 1' price1={1200} price2={1500} />
         </span>
         <span className='py-5 flex items-center justify-center'>
           <Link href={'/products'}>
@@ -109,10 +110,12 @@ const Home = () => {
         <Arrival/>
 
         {/* Upper Footer section */}
-        <span className=' justify-between flex flex-wrap  '>
+        <span className=''>
+        <span className='justify-center sm:justify-around items-center flex flex-wrap '>
         <UpperFooter title='Free And Fast Delivery' subtitle='free delivery for all orders over $140'/>
         <UpperFooter title='24/7 customer service' subtitle='Friendly 24/7 customer support'/>
         <UpperFooter title='money back guarantee ' subtitle='we return money within 30 days'/>
+        </span>
         </span>
       </div>
 

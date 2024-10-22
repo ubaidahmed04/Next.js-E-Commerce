@@ -11,7 +11,7 @@ import Image from "next/image";
  
 export function UpperFooter({title,subtitle,customStyle,target}) {
   return (
-    <Card className={`mt-6 w-contain flex flex-col items-center justify-center bg-none shadow-none + ${customStyle}`}>
+    <Card className={`mt-6 w-contain flex flex-col items-center justify-center   + ${customStyle}`}>
       <CardBody className="flex flex-col items-center justify-center">
       <Avatar
         src="https://docs.material-tailwind.com/img/face-2.jpg"

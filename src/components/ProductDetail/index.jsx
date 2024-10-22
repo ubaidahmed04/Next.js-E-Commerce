@@ -18,7 +18,7 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import { CardDefault } from "..";
+import {  ShowCard } from "@/components";
 import Image from "next/image";
 function StarIcon() {
   return (
@@ -196,10 +196,10 @@ export function ProductDetail({title,url,price}) {
         </div>
       </div>
       <span className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-3 justify-items-center gap-2'>
-        <CardDefault url={Product1} title='product 1' price1={1200} price2={1500} />
-        <CardDefault url={Product2} title='product 1' price1={1200} price2={1500} />
-        <CardDefault url={Product3} title='product 1' price1={1200} price2={1500} />
-        <CardDefault url={Product4} title='product 1' price1={1200} price2={1500} />
+        <ShowCard url={Product1} title='product 1' price1={1200} price2={1500} />
+        <ShowCard url={Product2} title='product 1' price1={1200} price2={1500} />
+        <ShowCard url={Product3} title='product 1' price1={1200} price2={1500} />
+        <ShowCard url={Product4} title='product 1' price1={1200} price2={1500} />
       </span>
     </div>
   );

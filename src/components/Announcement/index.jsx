@@ -24,7 +24,7 @@ import { Button } from '@material-tailwind/react';
             </p>
           </span>
         <span className='text-2xl md:text-4xl text-white'>Enhance Your Music Experience</span>
-        <span className='flex gap-2 items-center  text-white '>
+        <span className='flex gap-2 items-center  text-white  flex-wrap'>
           <span className='flex flex-col text-center justify-center bg-white text-black rounded-full p-2'>
             <span className='fontbold'>days</span>
             <span className='font-black text-xl md:text-2xl '>03</span>

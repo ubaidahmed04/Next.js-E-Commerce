@@ -1,8 +1,10 @@
 "use client"
 import React from "react";
 import Slider from "react-slick";
-import img1 from '@/components/Images/caroseul.jpg'
-import img2 from '@/components/Images/caroseul2.jpg'
+import img1 from '@/app/public/Images/caroseul01.jpg'
+import img2 from '@/app/public/Images/caroseul02.jpg'
+import img3 from '@/app/public/Images/caroseul03.jpg'
+import img4 from '@/app/public/Images/caroseul04.jpg'
 import Image from "next/image";
 export function Caroseul() {
   const settings = {
@@ -52,11 +54,11 @@ export function Caroseul() {
             className="w-full" alt="image 1"/>
         </div>
         <div className="image-wrapper  w-full overflow-hidden">
-          <Image height={400} layout="responsive" width={800} src={img1}  objectFit="cover"
+          <Image height={400} layout="responsive" width={800} src={img3}  objectFit="cover"
             className="w-full" alt="image 1"/>
         </div>
         <div className="image-wrapper  w-full overflow-hidden">
-          <Image height={400} layout="responsive" width={800} src={img2}  objectFit="cover"
+          <Image height={400} layout="responsive" width={800} src={img4}  objectFit="cover"
             className="w-full" alt="image 1"/>
         </div>
       </Slider>

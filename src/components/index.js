@@ -15,6 +15,7 @@ import {Contact} from './Contact'
 import {ProductDetail} from './ProductDetail'
 import { AddCart } from './AddtoCart'
 import {Loader} from './Loading'
+import {ShowCard} from './ShowCard'
 export {
     Appbar,
     Caroseul,
@@ -32,6 +33,7 @@ export {
     Contact,
     ProductDetail,
     AddCart,
-    Loader
+    Loader,
+    ShowCard
 
 }
