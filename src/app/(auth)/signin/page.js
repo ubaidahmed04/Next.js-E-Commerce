@@ -5,21 +5,63 @@ import { BiHide, BiShow } from "react-icons/bi";
 import { Button, Input } from "@material-tailwind/react";
 import { FaRegUser } from "react-icons/fa6";
 import { LoginSkeleton } from "../Skeleton";
+import { ErrorMessage, Field, Form, Formik, } from 'formik';
+import * as Yup from 'yup';
 const SignIn = () => {
   const router = useRouter()
-  const HomePage = () =>{
-    router.push("/")
-  }
+
   const [showPassword, setShowPassword] = useState(false);
   const tooglePassword = () => {
     setShowPassword(!showPassword)
   }
+  const initialValues = {
+    email: "",
+    password: ""
+  };
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
+  const handleSubmit = (values, { resetForm }) => {
+    const InputDataCheck = [
+      {
+        email: "admin@gmail.com",
+        password: "123456"
+      },
+      {
+        email: "sales@gmail.com",
+        password: "sales@123"
+      },
+    ]
+    const user = InputDataCheck.find(
+      (ele) => ele.email === values.email && ele.password === values.password
+    );
+    console.log("user", user)
+    if (user) {
+      alert("login Success")
 
-  // Initial Values
+      // dispatch(LoginSuccess(user));
+      // notifySuccess()
+      resetForm()
+
+      if (user.email == "admin@gmail.com") {
+        router.push("/")
+      } else {
+        router.push("/addCart")
+      }
+    } else {
+      alert("Invalid email or password")
+      // alert("Invalid email or password")
+    }
+  };
 
 
   return (
-    <Suspense fallback={<LoginSkeleton/>}>
+    <Suspense fallback={<LoginSkeleton />}>
       <div className="rounded-3xl border border-stroke w-full h-[80vh]   bg-[#e6e8eb] flex items-center justify-center shadow-lg shadow-gray-500">
         <div className="flex flex-wrap items-center justify-center w-full h-full ">
           <div className="hidden w-full xl:block xl:w-1/2">
@@ -30,7 +72,7 @@ const SignIn = () => {
               <p className="2xl:px-20">
                 Please Sign in to access your resources.
               </p>
-              <span className="mt-15 inline-block">
+              <span className="mt-15  inline-block">
                 <svg
                   width="350"
                   height="350"
@@ -156,39 +198,48 @@ const SignIn = () => {
           </div>
 
           <div className="w-full flex items-center flex-col gap-8 rounded-r-lg border-stroke bg-slate-300 dark:border-strokedark xl:w-1/2 xl:border-l-2">
-            <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+          <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                 Sign In to Portal
               </h2>
-              <div className="mb-4">
-                <label className="mb-2.5 block font-medium text-black dark:text-white">
-                  Email
-                </label>
-                <div className="w-full">
-                  <Input label="Enter Your Email" icon={<FaRegUser/>} />
-                </div>
-              </div>
-              <div className="mb-4">
-                <label className="mb-2.5 block font-medium text-black dark:text-white">
-                  Password
-                </label>
-                <div className="w-full">
-                  <Input type={showPassword ? "text" : "password"} label="Enter Your Email" icon={showPassword ? <BiShow size={25} onClick={tooglePassword} /> : <BiHide size={25} onClick={tooglePassword}  />}  />
-                </div>
-              </div>
-              <div className="mb-5">
-                <Button
-                variant="outlined"
-                  type="submit"
-                  className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white bg-secondary transition hover:bg-opacity-90"
-                  onClick={HomePage}
-                >
-                  SignIn
-                </Button>
-              </div>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ errors, touched }) => (
+                <Form className="w-full max-w-sm">
+                  <div className="relative mb-6">
+                    <Field
+                      name="email"
+                      type="email"
+                      placeholder="Email"
+                      className={`block w-full p-2 border-b-2 ${errors.email && touched.email ? 'border-red-500' : 'border-gray-300'}`}
+                    />
+                    <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
 
-            </div>
+                  <div className="relative mb-6">
+                    <Field
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      className={`block w-full p-2 border-b-2 ${errors.password && touched.password ? 'border-red-500' : 'border-gray-300'}`}
+                    />
+                    <span
+                      className="absolute right-2 top-2 cursor-pointer"
+                      onClick={tooglePassword}
+                    >
+                      {showPassword ? <BiShow /> : <BiHide />}
+                    </span>
+                    <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
 
+                  <Button type="submit" className="w-full text-red-500">
+                    Sign In
+                  </Button>
+                </Form>
+              )}
+            </Formik>
           </div>
         </div>
       </div>
