@@ -1,9 +1,10 @@
 "use client"
 import { Carousel } from "@material-tailwind/react";
-import img1 from "@/app/public/Images/carousel01.jpg";
+import img1 from "@/app/public/Images/caroseul01.jpg";
 import img2 from "@/app/public/Images/caroseul02.jpg";
 import img3 from "@/app/public/Images/caroseul03.jpg";
 import img4 from "@/app/public/Images/caroseul04.jpg";
+import img5 from "@/app/public/Images/carosuel05.jpg";
 import Image from "next/image";
 import { carosel1 } from "@/app/public/const/base64";
 export function CarouselDefault() {
@@ -32,7 +33,7 @@ export function CarouselDefault() {
         className="h-64 md:h-80 lg:h-96  w-full object-fit"
       />
       <Image
-        src={img4}
+        src={img5}
         alt="image 3"
         height={300}
         width={500}

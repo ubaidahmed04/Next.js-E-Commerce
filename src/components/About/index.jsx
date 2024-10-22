@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Category1 from "@/app/public/Images/shopingGirl.jpg";
+import Category1 from "@/app/public/Images/ModelImg.jpg";
 import About1 from "@/app/public/Images/about1.png";
 import About2 from "@/app/public/Images/about2.png";
 import About3 from "@/app/public/Images/about3.png";

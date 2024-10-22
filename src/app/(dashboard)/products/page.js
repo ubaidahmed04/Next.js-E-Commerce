@@ -18,7 +18,7 @@ import { ProductSkeleton } from './productSkeleton';
 const Product = () => {
   return (
     <Suspense fallback={<ProductSkeleton/>}>
-    <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4'>
+    <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4 pb-10 pt-4'>
       {/* <Link href={`/products/product5`}> */}
       <CardDefault url={Product5} navigate={'/product5'} title='product 5' price1={1200} price2={1500} />
       {/* </Link> */}
