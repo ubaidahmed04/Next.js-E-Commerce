@@ -140,18 +140,18 @@ export function Appbar() {
   );
 
   return (
-    <Navbar className="sticky top-0 z-10 h-max max-w-full bg-gray-100 rounded-none px-4 py-2 lg:px-8 lg:py-4">
+    <Navbar className="sticky top-0 z-10 h-max max-w-full bg-gray-100 rounded-none px-2 py-2 lg:px-8 lg:py-4">
       <div className="flex items-center justify-between text-blue-gray-900 ">
         <Typography
           as="a"
           href="/"
-          className="mr-4 cursor-pointer text-xl font-bold py-1.5 myfontbold"
+          className="mr-1 sm:mr-4 cursor-pointer  text-sm md:text-xl font-bold py-1.5 sm:myfontbold"
         >
           ShopWeb
         </Typography>
         <div className="mr-4 hidden lg:block">{navList}</div>
-        <div className="flex items-center gap-4">
-          <span className="max-w-sm">
+        <div className="flex items-center sm:gap-4">
+          <span className="w-full">
             <Input placeholder="Search ...." className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
               labelProps={{
                 className: "hidden",
