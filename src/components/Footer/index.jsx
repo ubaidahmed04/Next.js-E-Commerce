@@ -20,7 +20,6 @@ const SITEMAP = [
   },
 ];
  
-const currentYear = new Date().getFullYear();
  
 export function Footer() {
   return (

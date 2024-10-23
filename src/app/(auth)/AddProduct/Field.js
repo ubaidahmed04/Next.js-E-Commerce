@@ -1,7 +1,8 @@
 import { Input, Typography } from '@material-tailwind/react'
 import React from 'react'
+import { ErrorMessage, Field, Form, Formik } from "formik";
 
-const Field = ({label, type, placeholder, id }) => {
+const InputFields = ({label, type, placeholder, name }) => {
   return (
     <div>
             <label >
@@ -13,20 +14,21 @@ const Field = ({label, type, placeholder, id }) => {
                 {label}
               </Typography>
             </label>
-            <Input
-              id={id}
+            <Field
+            as={Input}
               color="gray"
               size="lg"
               type={type}
-              name="email"
+              name={name}
               placeholder={placeholder}
-              className="!w-full placeholder:!opacity-100 focus:!border-t-primary !border-t-blue-gray-200"
+              className="!w-full placeholder:!opacity-100 focus:!border-t-primary  !border-t-blue-gray-200"
               labelProps={{
                 className: "hidden",
               }}
             />
+
           </div>
   )
 }
 
-export default Field
+export default InputFields
