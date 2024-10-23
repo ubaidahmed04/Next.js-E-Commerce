@@ -61,11 +61,11 @@ const sendEmail = (values) => {
   };
 
   return (
-    <Card className="p-8 max-w-lg  mx-auto bg-white shadow-lg rounded-lg">
-      <Typography variant="h3" color="blue-gray" className="text-center mb-6 font-bold py-4">
+    <Card className="p-6  max-w-lg  mx-auto bg-white shadow-lg rounded-lg">
+      <Typography variant="h3" color="blue-gray" className="text-center mb-3 font-bold py-2">
         Contact Us
       </Typography>
-      <Typography color="gray" className="text-center mb-8">
+      <Typography color="gray" className="text-center mb-4 lg:mb-8">
         Have any questions? We&apos;d love to hear from you. Please fill out the form below.
       </Typography>
 
