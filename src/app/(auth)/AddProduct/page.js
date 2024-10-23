@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // @components
 import {
   Card,
@@ -15,10 +15,15 @@ import Image from "next/image";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from 'yup';
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 
 
 export function CryptoLogin() {
+  const { isUser } = useSelector((state) => state.currUser)
+  console.log(isUser?.email == "admin@gmail.com")
+  const router = useRouter()
   const file = useRef();
   // console.log("file", file.current.value)
   const initialValues = {
@@ -74,6 +79,11 @@ export function CryptoLogin() {
       setFileName(e.target.files[0].name);
     }
   };
+  useEffect(() => {
+    if (!isUser || isUser.email !== "admin@gmail.com") {
+      router.push('/');
+    }
+  }, [isUser, router]);
   return (
     <Card
       shadow={false}

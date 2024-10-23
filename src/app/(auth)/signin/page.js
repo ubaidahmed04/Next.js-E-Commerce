@@ -7,9 +7,11 @@ import { FaRegUser } from "react-icons/fa6";
 import { LoginSkeleton } from "../Skeleton";
 import { ErrorMessage, Field, Form, Formik, } from 'formik';
 import * as Yup from 'yup';
+import { LoginSuccess } from "@/app/Redux/Slices/UserSlice";
+import { useDispatch } from "react-redux";
 const SignIn = () => {
   const router = useRouter()
-
+  const dispatch = useDispatch()
   const [showPassword, setShowPassword] = useState(false);
   const tooglePassword = () => {
     setShowPassword(!showPassword)
@@ -44,7 +46,7 @@ const SignIn = () => {
     if (user) {
       alert("login Success")
 
-      // dispatch(LoginSuccess(user));
+      dispatch(LoginSuccess(user));
       // notifySuccess()
       resetForm()
 
@@ -226,7 +228,7 @@ const SignIn = () => {
                       className={`block w-full p-2 border-b-2 ${errors.password && touched.password ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     <span
-                      className="absolute right-2 top-2 cursor-pointer"
+                      className="absolute right-2 top-3 cursor-pointer"
                       onClick={tooglePassword}
                     >
                       {showPassword ? <BiShow /> : <BiHide />}

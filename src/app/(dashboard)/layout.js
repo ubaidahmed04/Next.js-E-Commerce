@@ -1,5 +1,6 @@
 import "../globals.css";
 import { Appbar, Footer } from '@/components'
+import { Providers } from "@/app/Redux/Provider";
 
 export const metadata = {
   title: 'PicknBuy',
@@ -12,11 +13,13 @@ export default function RootLayout({ children }) {
       <body
         className="myfont flex flex-col min-h-screen" 
       >
+        <Providers>
         < Appbar />
         <main className="flex-grow max-w-screen-xl  w-full h-full mx-auto">
           {children}
         </main>
         <Footer />
+        </Providers>
       </body>
     </html>
   )
