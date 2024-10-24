@@ -38,6 +38,24 @@ try {
   return err.response.data
 }
 };
+// https://e-commerce-backend-eosin-nine.vercel.app/product?category=games
+// https://e-commerce-backend-eosin-nine.vercel.app/product?limit=5
+export const getSingleProducts = async (route) => {
+  const config = {
+  url: URL + route,
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    // Authorization: `Bearer ${token}`,
+  }
+};
+try {
+  const res = await axios.request(config);
+  return res.data
+} catch(err) {
+  return err.response.data
+}
+};
 
 export const DeleteProduct = async (route) => {
   const config = {

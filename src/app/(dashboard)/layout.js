@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       >
         <Providers>
         < Appbar />
-        <main className="flex-grow max-w-screen-xl  w-full h-full mx-auto">
+        <main className="flex-grow max-w-screen-xl  w-full min-h-full mx-auto">
           {children}
         </main>
         <Footer />

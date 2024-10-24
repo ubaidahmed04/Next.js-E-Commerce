@@ -1,7 +1,7 @@
 "use client"
 import { configureStore } from '@reduxjs/toolkit';
 import UserReducer from './Slices/UserSlice';
-// import BlogReducer from './getBlogSlice'
+import allProductReducer from './Slices/allProducts'
 
 // import CandidateReducer from './GetCareerDetails'
 import {
@@ -27,7 +27,7 @@ const persistedReducer = persistReducer(persistConfig, UserReducer);
 const store = configureStore({
   reducer: {
     currUser: persistedReducer,
-    // blogs: BlogReducer,
+    allproducts: allProductReducer,
     // candidateDetail:CandidateReducer
 
   },
