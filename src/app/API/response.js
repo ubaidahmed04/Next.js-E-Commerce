@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "https://nubit-blog.vercel.app";
+const URL = "https://e-commerce-backend-eosin-nine.vercel.app";
 
 
 export const AddProduct = async (route, data) => {

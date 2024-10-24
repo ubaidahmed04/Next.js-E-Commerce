@@ -19,6 +19,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { FaRegEdit } from "react-icons/fa";
 import { BiLogOutCircle } from "react-icons/bi";
 import { SlBasket, SlMagnifier } from "react-icons/sl";
+import { GiShoppingCart } from "react-icons/gi";
 import { usePathname, useRouter } from 'next/navigation'
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
@@ -85,11 +86,16 @@ export function Appbar() {
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 myfont"
+        className=" myfont"
       >
-        <Link href="/about" className={`${pathName === '/about' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
+       { !isUser ?
+          <Link href="/about" className={`${pathName === '/products' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
           About
+        </Link> :
+          <Link href="/ProductList" className={`${pathName === '/AddProduct' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
+          Product List
         </Link>
+        }
       </Typography>
       <Typography
         as="li"
@@ -122,8 +128,8 @@ export function Appbar() {
   <Link
     href="#"
     onClick={async () => {
-      await dispatch(Logout()); // Dispatch logout action
-      router.push('/signin');   // After logout, navigate to signin
+      await dispatch(Logout()); 
+      router.push('/signin');   
     }}
     className={`${
       pathName === '/signin'
@@ -151,7 +157,7 @@ export function Appbar() {
         </Typography>
         <div className="mr-4 hidden lg:block">{navList}</div>
         <div className="flex items-center sm:gap-4">
-          <span className="w-full">
+          <span className="">
             <Input placeholder="Search ...." className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
               labelProps={{
                 className: "hidden",
@@ -159,13 +165,13 @@ export function Appbar() {
           </span>
           <Link href={'/addCart'}>
             <span className="hidden lg:block cursor-pointer">
-              <SlBasket size={30} />
+              <GiShoppingCart size={30} />
             </span>
           </Link>
 
           <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end"   >
 
-            <MenuHandler>
+            <MenuHandler >
               <Button
                 variant="text"
                 color="blue-gray"
@@ -177,7 +183,7 @@ export function Appbar() {
                   alt="tania andrew"
                   withBorder={true}
                   color="blue-gray"
-                  className=" p-0.5"
+                  className="rounded-full p-0.5"
                   src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
                 />
               </Button>
