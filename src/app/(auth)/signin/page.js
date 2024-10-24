@@ -3,12 +3,13 @@ import React, { Suspense, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
 import { BiHide, BiShow } from "react-icons/bi";
 import { Button, Input } from "@material-tailwind/react";
-import { FaRegUser } from "react-icons/fa6";
 import { LoginSkeleton } from "../Skeleton";
 import { ErrorMessage, Field, Form, Formik, } from 'formik';
 import * as Yup from 'yup';
 import { LoginSuccess } from "@/app/Redux/Slices/UserSlice";
 import { useDispatch } from "react-redux";
+import { errorNotify, successNotify } from "@/components/Toast";
+import { ToastContainer } from "react-toastify";
 const SignIn = () => {
   const router = useRouter()
   const dispatch = useDispatch()
@@ -44,20 +45,17 @@ const SignIn = () => {
     );
     console.log("user", user)
     if (user) {
-      alert("login Success")
-
       dispatch(LoginSuccess(user));
-      // notifySuccess()
       resetForm()
 
       if (user.email == "admin@gmail.com") {
+        successNotify("login Success")
         router.push("/")
       } else {
         router.push("/addCart")
       }
     } else {
-      alert("Invalid email or password")
-      // alert("Invalid email or password")
+      errorNotify("Invalid email or password")
     }
   };
 
@@ -244,6 +242,8 @@ const SignIn = () => {
             </Formik>
           </div>
         </div>
+      <ToastContainer/>
+
       </div>
     </Suspense>
   );

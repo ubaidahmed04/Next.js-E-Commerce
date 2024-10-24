@@ -3,6 +3,8 @@
 @tailwind utilities;
 /* cormorant font import */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap');
+/* react toastify  */
+@import 'react-toastify/dist/ReactToastify.css';
 .myfont {
   font-weight: 350; /* Apply any weight here */
   font-optical-sizing: auto;

@@ -18,7 +18,8 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { AddProduct } from "@/app/API/response";
-
+import { errorNotify, successNotify } from "@/components/Toast";
+import { ToastContainer } from "react-toastify";
 
 
 export function CryptoLogin() {
@@ -72,17 +73,21 @@ export function CryptoLogin() {
     for (let i = 0; i < files.length; i++) {
       data.append("file", files[i]); // "file" is the key name for multiple files
     }
-
-    const response = await AddProduct(route, data)
-
-    console.log("response--->>>>", response.message)
-    alert(response.message)
-    setFileNames([])
-    resetForm()
+    try {
+      
+      const response = await AddProduct(route, data)
+      console.log("response--->>>>", response.message)
+      successNotify(response.message)
+      setFileNames([])
+      resetForm()
+      
+    } catch (error) {
+      errorNotify(error ||response.message)
+    }
 
   }
   const handleFileChange = (e) => {
-    const maxFileSize = 50 * 1024 * 1024; // 5MB limit
+    const maxFileSize = 5 * 1024 * 1024; // 5MB limit
     const selectedFiles = Array.from(e.target.files);
     
     const validFiles = selectedFiles.filter(file => file.size <= maxFileSize);
@@ -189,7 +194,8 @@ export function CryptoLogin() {
               </span>
 
               <span>
-                <FieldInput type="text" name='category' placeholder="Category" label="Category" />
+                <FieldInput type="select" name='category' placeholder="Category" label="Category" />
+                {/* <option></option> */}
                 <ErrorMessage name="category" component="div" className="text-red-500 text-sm mt-1" />
               </span>
 
@@ -216,6 +222,7 @@ export function CryptoLogin() {
         </Formik>
 
       </CardBody>
+      <ToastContainer/>
     </Card>
   );
 }
