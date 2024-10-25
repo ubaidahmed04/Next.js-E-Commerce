@@ -5,7 +5,7 @@ import { ProductSkeleton } from './productSkeleton';
 import { getAllProducts } from '@/app/API/response';
 import { errorNotify, successNotify } from '@/components/Toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductSuccess } from '@/app/Redux/Slices/allProducts';
+import { getProductStart, getProductSuccess } from '@/app/Redux/Slices/allProducts';
 import { addToCart } from '@/app/Redux/Slices/addToCart';
 
 const Product = () => {
@@ -15,6 +15,7 @@ const Product = () => {
   const getAllProduct = async() => {
     const route = '/product'  
     try {
+      dispatch(getProductStart())
         const response = await getAllProducts(route)
         console.log("response--->>>>", response)
         dispatch(getProductSuccess(response.data))

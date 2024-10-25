@@ -23,8 +23,9 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteProduct, getAllProducts } from "@/app/API/response";
-import { deleteProduct, getProductSuccess } from "@/app/Redux/Slices/allProducts";
+import { deleteProduct, getProductStart, getProductSuccess } from "@/app/Redux/Slices/allProducts";
 import { errorNotify,successNotify } from "../Toast";
+import {Loader} from "@/components";
  
 const TABLE_HEAD = ["Image", "Price", "Category", "Brand", "Quantity", "Action"];
  
@@ -83,6 +84,7 @@ export function ProductTable() {
   const getAllProduct = async() => {
     const route = '/product'  
     try {
+        dispatch(getProductStart())
         const response = await getAllProducts(route)
         console.log("response--->>>>", response)
         dispatch(getProductSuccess(response.data))        
@@ -126,7 +128,7 @@ export function ProductTable() {
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
             <Typography variant="h5" color="blue-gray">
-             ProductList
+            All ProductList
             </Typography>
             <Typography color="gray" className="mt-1 font-normal">
              Productlist all products are here
@@ -164,7 +166,8 @@ export function ProductTable() {
             </tr>
           </thead>
           <tbody>
-            {allProducts.map(
+            { isLoader ?<div className='w-full flex justify-center flex-col items-center pl-32 md:pl-80'><span><Loader/></span></div> :
+            allProducts.map(
               (item,index,) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast
@@ -179,7 +182,7 @@ export function ProductTable() {
                           src={item?.file[0]}
                           alt={name}
                           size="md"
-                          className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                          className="border border-blue-gray-50 bg-blue-gray-50/50 object-fit p-1"
                         />
                         <Typography
                           variant="small"
