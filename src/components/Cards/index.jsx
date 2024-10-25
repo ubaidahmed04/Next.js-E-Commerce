@@ -7,6 +7,7 @@ import {
   IconButton,
   Button
 } from "@material-tailwind/react";
+import { MdOutlineShoppingCart } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,7 +31,6 @@ function StarIcon() {
 export function CardDefault({ url, title, price1, price2, navigate }) {
   return (
     <Card className="min-w-full max-w-[14rem] shadow-lg">
-      <Link href={`/products/${navigate}`}>
       <CardHeader floated={false} color="blue-gray " className="group relative">
         <Image
           height={200}
@@ -41,13 +41,7 @@ export function CardDefault({ url, title, price1, price2, navigate }) {
         />
         <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
         {/* Add to Cart button */}
-        <Button
-          size="md"
-          className="absolute bottom-0 left-0 right-0 opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-in-out w-full h-12 bg-secondary text-white"
-          // fullwidth={true}
-        >
-          Add to Cart
-        </Button>
+       
         <IconButton
           size="sm"
           color="red"
@@ -91,8 +85,21 @@ export function CardDefault({ url, title, price1, price2, navigate }) {
           <StarIcon />
           (35)
         </Typography>
-      </CardBody>
+      <Link href={`/products/${navigate}`}>
+      <span className="flex justify-between items-center">
+      
+        <Typography variant="h5" color="blue-gray" className="font-medium myfont">
+            See more
+          </Typography>
+          <Button
+          size="sm"
+          className="opacity-100  w-fit h-8 bg-secondary text-white flex gap-2  p-2"
+        >
+          Add to Cart <MdOutlineShoppingCart className="h-4 w-4 text-black"/>
+        </Button>
+      </span>
       </Link>
+      </CardBody>
     </Card>
   );
 }

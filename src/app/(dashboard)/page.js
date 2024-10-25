@@ -44,7 +44,6 @@ const Home = () => {
       <CarouselDefault />
       <div className='px-4'>
 
-        {/* Today sale product card section */}
         <Title title='Todays' Subtitle='Flash Sales' />
         <span className='flex gap-3 items-center mt-4 '>
           <span className='flex flex-col justify-center'>
@@ -72,7 +71,6 @@ const Home = () => {
           <ShowCard url={Product3} title='product 1' price1={1200} price2={1500} />
           <ShowCard url={Product4} title='product 1' price1={1200} price2={1500} />
         </span>
-        {/* categories section */}
 
         <Title title='Categories' Subtitle='Browse By Category' />
         <span className='flex gap-4 flex-wrap items-center justify-center'>
@@ -83,11 +81,9 @@ const Home = () => {
           <Category productName="Gaming" url={Category6} />
 
         </span>
-        {/* this announcement section */}
         <span className=''>
         <Announcement/>
         </span>
-        {/* This month sales section */}
         <Title title='Our Products' Subtitle='Explore Our Products' />
         <span className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-3 justify-items-center gap-2'>
           <ShowCard url={Product5} title='product 1' price1={1200} price2={1500} />
@@ -106,11 +102,9 @@ const Home = () => {
           </Button>
           </Link>
         </span>
-        {/* New Arrival section */}
         <Title title='Featured' Subtitle='New Arrivals' />
         <Arrival/>
 
-        {/* Upper Footer section */}
         <span className=''>
         <span className='justify-center sm:justify-around items-center flex flex-wrap '>
         <UpperFooter title='Free And Fast Delivery' subtitle='free delivery for all orders over $140'/>

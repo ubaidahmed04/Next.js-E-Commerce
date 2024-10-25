@@ -26,20 +26,18 @@ const Product = () => {
   }
   useEffect(()=>{
     getAllProduct()
-  },[])
+  },[getAllProduct])
   return (
     <Suspense fallback={<ProductSkeleton/>}>
-     {   isLoader ?<div className=' flex-grow  w-full  mx-auto '><Loader/></div>:
-      <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4 pb-10 pt-4 flex-grow max-w-screen-xl  w-full h-full mx-auto'>
+     {   isLoader ?<div className='  w-full  mx-auto '><Loader/></div>:
+      <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4 pb-10 pt-4 flex-grow max-w-screen-xl  w-full min-h-screen max-h-full mx-auto'>
      
        { allProducts.map((item,index)=>(
             <CardDefault key={index} url={item?.file[0]} navigate={item._id} title={item?.productname} price1={item?.price} price2={item?.price*250} />
-            
           ))
         }
         </div>}
      
-    
     </Suspense>
   )
 }

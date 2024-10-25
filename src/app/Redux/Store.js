@@ -1,8 +1,8 @@
 "use client"
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import UserReducer from './Slices/UserSlice';
 import allProductReducer from './Slices/allProducts'
-
+import AddCartReducer from './Slices/addToCart'
 // import CandidateReducer from './GetCareerDetails'
 import {
   persistStore,
@@ -20,17 +20,21 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
+  whitelist: ["currUser", "cart"], 
 };
+const rootReducer = combineReducers({
+  currUser: UserReducer,
+  cart: AddCartReducer,
+  allproducts: allProductReducer,
+});
 
-const persistedReducer = persistReducer(persistConfig, UserReducer);
+// Apply persistReducer only to 'user' and 'cart' in rootReducer
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 
 const store = configureStore({
-  reducer: {
-    currUser: persistedReducer,
-    allproducts: allProductReducer,
-    // candidateDetail:CandidateReducer
-
-  },
+  reducer: persistedReducer,
+  
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

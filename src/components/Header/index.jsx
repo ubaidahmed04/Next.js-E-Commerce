@@ -12,6 +12,7 @@ import {
   MenuList,
   Typography,
   Input,
+  Badge,
 } from "@material-tailwind/react";
 import { RxCross2 } from "react-icons/rx";
 import { FaRegCircleUser } from "react-icons/fa6";
@@ -165,7 +166,11 @@ export function Appbar() {
           </span>
           <Link href={'/addCart'}>
             <span className="hidden lg:block cursor-pointer">
+            
+
+            <Badge content="4">
               <GiShoppingCart size={30} />
+            </Badge>
             </span>
           </Link>
 

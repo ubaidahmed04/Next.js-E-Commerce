@@ -11,11 +11,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className="myfont flex flex-col min-h-screen" 
+        className="myfont flex flex-col min-h-screen max-h-full" 
       >
         <Providers>
         < Appbar />
-        <main className="flex-grow max-w-screen-xl  w-full min-h-full mx-auto">
+        <main className="flex-grow max-w-screen-xl w-full flex flex-col mx-auto">
           {children}
         </main>
         <Footer />
