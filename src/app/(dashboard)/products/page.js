@@ -1,5 +1,5 @@
 "use client"
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { CardDefault, Loader } from '@/components'
 import { ProductSkeleton } from './productSkeleton';
 import { getAllProducts } from '@/app/API/response';
@@ -7,13 +7,24 @@ import { errorNotify, successNotify } from '@/components/Toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductStart, getProductSuccess } from '@/app/Redux/Slices/allProducts';
 import { addToCart } from '@/app/Redux/Slices/addToCart';
+import { DefaultPagination } from './Paginition';
 
 const Product = () => {
+  const [limit, setLimit] = useState(10);
+  const [skip, setSkip] = useState(0);
   const dispatch = useDispatch()
+  // let limit = 10
+  // let skip = 0
+  const nextPage =()=>{
+    setSkip((prevSkip) => prevSkip + limit);
+  }
+  const previousPage =()=>{
+    setSkip((prevSkip) => Math.max(prevSkip - limit, 0)); 
+  }
   const {allProducts,isLoader} = useSelector((state)=> state.allproducts)
   console.log("redux allProducts",allProducts)
   const getAllProduct = async() => {
-    const route = '/product'  
+    const route = `/product?limit=${limit}&skip=${skip}`;  
     try {
       dispatch(getProductStart())
         const response = await getAllProducts(route)
@@ -31,7 +42,7 @@ const Product = () => {
   };
   useEffect(()=>{
     getAllProduct()
-  },[])
+  },[limit,skip])
 
   return (
     <Suspense fallback={<ProductSkeleton/>}>
@@ -43,7 +54,10 @@ const Product = () => {
           ))
         }
         </div>}
-     
+        <span className='flex justify-center items-center py-4'>
+          <DefaultPagination nextPage={nextPage} previousPage={previousPage}/>
+
+        </span>
     </Suspense>
   )
 }

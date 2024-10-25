@@ -10,9 +10,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className="myfont flex flex-col min-h-screen max-h-full" 
-      >
+      <body>
+        <section className="myfont flex flex-col min-h-screen max-h-full" >
         <Providers>
         < Appbar />
         <main className="flex-grow max-w-screen-xl w-full flex flex-col mx-auto">
@@ -20,6 +19,7 @@ export default function RootLayout({ children }) {
         </main>
         <Footer />
         </Providers>
+        </section>
       </body>
     </html>
   )

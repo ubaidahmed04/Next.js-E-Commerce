@@ -26,6 +26,7 @@ import { DeleteProduct, getAllProducts } from "@/app/API/response";
 import { deleteProduct, getProductStart, getProductSuccess } from "@/app/Redux/Slices/allProducts";
 import { errorNotify,successNotify } from "../Toast";
 import {Loader} from "@/components";
+import { DefaultPagination } from "@/app/(dashboard)/products/Paginition";
  
 const TABLE_HEAD = ["Image", "Price", "Category", "Brand", "Quantity", "Action"];
  
@@ -81,17 +82,47 @@ export function ProductTable() {
   const dispatch = useDispatch()
   const {allProducts,isLoader} = useSelector((state)=> state.allproducts)
   console.log("redux allProducts",allProducts)
+  const [limit, setLimit] = useState(10);
+  const [skip, setSkip] = useState(0);
+  // let limit = 10
+  // let skip = 0
+  const nextPage =()=>{
+    setSkip((prevSkip) => prevSkip + limit);
+  }
+  const previousPage =()=>{
+    setSkip((prevSkip) => Math.max(prevSkip - limit, 0)); 
+  }
+  console.log("redux allProducts",allProducts)
   const getAllProduct = async() => {
-    const route = '/product'  
+    const route = `/product?limit=${limit}&skip=${skip}`;  
     try {
-        dispatch(getProductStart())
+      dispatch(getProductStart())
         const response = await getAllProducts(route)
         console.log("response--->>>>", response)
-        dispatch(getProductSuccess(response.data))        
+        dispatch(getProductSuccess(response.data))
+        
+        
       } catch (error) {
         errorNotify(error ||response.message)
       }
+  
   }
+  
+  useEffect(()=>{
+    getAllProduct()
+  },[limit,skip])
+
+  // const getAllProduct = async() => {
+  //   const route = '/product'  
+  //   try {
+  //       dispatch(getProductStart())
+  //       const response = await getAllProducts(route)
+  //       console.log("response--->>>>", response)
+  //       dispatch(getProductSuccess(response.data))        
+  //     } catch (error) {
+  //       errorNotify(error ||response.message)
+  //     }
+  // }
  // delete products 
  const deleteSingleProduct = async(id) =>{
   const response = await DeleteProduct(`/product/${id}`)
@@ -278,36 +309,9 @@ export function ProductTable() {
           </Button>
         </DialogFooter>
       </Dialog>
-      <CardFooter className="flex items-center justify-center md:justify-between border-t border-blue-gray-50 p-4">
-        <Button variant="outlined" className="hidden md:block" size="sm">
-          Previous
-        </Button>
-        <div className="flex items-center gap-2">
-          <IconButton variant="outlined" size="sm">
-            1
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            2
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            3
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            ...
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            8
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            9
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            10
-          </IconButton>
-        </div>
-        <Button variant="outlined"  className="hidden md:block" size="sm">
-          Next
-        </Button>
+      <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
+      <DefaultPagination nextPage={nextPage} previousPage={previousPage}/>
+        
       </CardFooter>
     </Card>
   );
