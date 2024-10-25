@@ -16,10 +16,16 @@ export const productSlice = createSlice({
         state.isLoader= false
         state.allProducts = action.payload
     },
+    deleteProduct: (state,action) => {
+      state.isLoader = true
+      state.allProducts = state.allProducts.filter((elem)=>elem._id !== action.payload)
+      state.isLoader = false
+
+    }
     
   },
 })
 
-export const {getProductStart,getProductSuccess,} = productSlice.actions
+export const {getProductStart,getProductSuccess,deleteProduct} = productSlice.actions
 
 export default productSlice.reducer

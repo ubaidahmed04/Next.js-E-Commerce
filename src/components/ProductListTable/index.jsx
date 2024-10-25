@@ -20,7 +20,11 @@ import {
   DialogFooter,
   DialogBody,
 } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { DeleteProduct, getAllProducts } from "@/app/API/response";
+import { deleteProduct, getProductSuccess } from "@/app/Redux/Slices/allProducts";
+import { errorNotify,successNotify } from "../Toast";
  
 const TABLE_HEAD = ["Image", "Price", "Category", "Brand", "Quantity", "Action"];
  
@@ -72,6 +76,33 @@ const TABLE_ROWS = [
 ];
  
 export function ProductTable() {
+
+  const dispatch = useDispatch()
+  const {allProducts,isLoader} = useSelector((state)=> state.allproducts)
+  console.log("redux allProducts",allProducts)
+  const getAllProduct = async() => {
+    const route = '/product'  
+    try {
+        const response = await getAllProducts(route)
+        console.log("response--->>>>", response)
+        dispatch(getProductSuccess(response.data))        
+      } catch (error) {
+        errorNotify(error ||response.message)
+      }
+  }
+ // delete products 
+ const deleteSingleProduct = async(id) =>{
+  const response = await DeleteProduct(`/product/${id}`)
+  console.log(response)
+  dispatch(deleteProduct(id))
+  successNotify("Product Delete Successfully")
+
+}
+  useEffect(()=>{
+    getAllProduct()
+  },[])
+
+
   const [openModal, setOpenModal] = useState(false); // To control modal visibility
   const [selectedProduct, setSelectedProduct] = useState(null);
   const handleOpenModal = (product) => {
@@ -95,7 +126,7 @@ export function ProductTable() {
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
             <Typography variant="h5" color="blue-gray">
-    ProductList
+             ProductList
             </Typography>
             <Typography color="gray" className="mt-1 font-normal">
              Productlist all products are here
@@ -133,30 +164,19 @@ export function ProductTable() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(
-              (
-                {
-                  img,
-                  name,
-                  amount,
-                  category,
-                  brand,
-                  quantity,
-                  
-                },
-                index,
-              ) => {
+            {allProducts.map(
+              (item,index,) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast
                   ? "p-4"
                   : "p-4 border-b border-blue-gray-50";
  
                 return (
-                  <tr key={name}>
+                  <tr key={index}>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
                         <Avatar
-                          src={img}
+                          src={item?.file[0]}
                           alt={name}
                           size="md"
                           className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
@@ -166,7 +186,7 @@ export function ProductTable() {
                           color="blue-gray"
                           className="font-bold"
                         >
-                          {name}
+                          {item?.productname}
                         </Typography>
                       </div>
                     </td>
@@ -176,7 +196,7 @@ export function ProductTable() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {amount}
+                        {item.price}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -185,7 +205,7 @@ export function ProductTable() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {category}
+                        {item?.category}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -193,14 +213,8 @@ export function ProductTable() {
                         <Chip
                           size="sm"
                           variant="ghost"
-                          value={brand}
-                          color={
-                            brand === "paid"
-                              ? "green"
-                              : brand === "pending"
-                              ? "amber"
-                              : "red"
-                          }
+                          value={item?.brand}
+                          color='amber'
                         />
                       </div>
                     </td>
@@ -213,7 +227,7 @@ export function ProductTable() {
                             color="blue-gray"
                             className="font-normal capitalize"
                           >
-                           {quantity}
+                           {item?.quantity}
                           </Typography>
                           
                         </div>
@@ -227,7 +241,7 @@ export function ProductTable() {
                         </IconButton>
                       </Tooltip>
                       <Tooltip content="Delete Product">
-                        <IconButton variant="text">
+                        <IconButton variant="text" onClick={()=>deleteSingleProduct(item._id)}>
                           <FaRegTrashAlt className="h-4 w-4" />
                         </IconButton>
                       </Tooltip>

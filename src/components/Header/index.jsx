@@ -159,24 +159,22 @@ export function Appbar() {
         </Typography>
         <div className="mr-4 hidden lg:block">{navList}</div>
         <div className="flex items-center sm:gap-4">
-          <span className="">
+          <span className="hidden sm:block">
             <Input placeholder="Search ...." className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
               labelProps={{
                 className: "hidden",
               }} icon={<SlMagnifier />} />
           </span>
           <Link href={'/addCart'}>
-            <span className="hidden lg:block cursor-pointer">
-            
-
-            <Badge content={cartItems.length}>
+            <span className=" cursor-pointer hidden lg:block">
+            <Badge content={cartItems?.length}>
               <GiShoppingCart size={30} />
             </Badge>
             </span>
           </Link>
+          
 
           <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end"   >
-
             <MenuHandler >
               <Button
                 variant="text"
@@ -228,22 +226,33 @@ export function Appbar() {
             </MenuList>
           </Menu>
         </div>
+        <div className="flex items-center lg:hidden">
 
+        <Link href={'/addCart'}>
+            <span className=" cursor-pointer lg:hidden">
+            <Badge content={cartItems?.length}>
+              <GiShoppingCart size={30} />
+            </Badge>
+            </span>
+          </Link>
         <IconButton
           variant="text"
           className="lg:hidden"
           onClick={() => setOpenNav(!openNav)}
         >
+          
           {openNav ? (
             <RxCross2 className="h-6 w-6" />
           ) : (
             <HiMenuAlt1 className="h-6 w-6" />
           )}
         </IconButton>
+        </div>
       </div>
       <Collapse open={openNav}>
         {navList}
         <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end" className='flex md:hidden'>
+        
           <MenuHandler>
             <Button
               variant="text"
