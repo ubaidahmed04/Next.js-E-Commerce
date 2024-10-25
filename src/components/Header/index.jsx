@@ -47,6 +47,7 @@ export function Appbar() {
   const router = useRouter()
   const closeMenu = () => setIsMenuOpen(false);
   const { isUser } = useSelector((state) => state.currUser)
+  const cartItems = useSelector((state) => state.cart.items);
   
   console.log("currentUser",isUser)
   React.useEffect(() => {
@@ -168,7 +169,7 @@ export function Appbar() {
             <span className="hidden lg:block cursor-pointer">
             
 
-            <Badge content="4">
+            <Badge content={cartItems.length}>
               <GiShoppingCart size={30} />
             </Badge>
             </span>

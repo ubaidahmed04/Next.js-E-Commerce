@@ -1,13 +1,21 @@
 "use client"
 import React from "react";
-import { Stepper, Step, Button, Card, Input } from "@material-tailwind/react";
+import { Stepper, Step, Button, Card, Input, IconButton } from "@material-tailwind/react";
 import { BsCreditCard2Front } from "react-icons/bs";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoBagAddOutline } from "react-icons/io5";
-import Product1 from "@/app/public/Images/product1.png";
-import Product2 from "@/app/public/Images/product2.png";
+import { FaRegTrashAlt } from "react-icons/fa";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "@/app/Redux/Slices/addToCart";
 export function StepperCard() {
+  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+
+  const handleRemoveFromCart = (id) => {
+    dispatch(removeFromCart(id)); 
+  };
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
@@ -22,43 +30,42 @@ export function StepperCard() {
           <div className="mt-8 w-full">
             <h2 className="text-xl font-bold mb-4">Your Cart</h2>
             <div className="space-y-4 w-full">
-  <Card className="p-6 w-full h-full flex items-center bg-white shadow-md rounded-lg space-x-6">
-  <div className="flex-shrink-0">
-    <Image
-      width={100}
-      height={100}
-      src={Product1}
-      alt="Product 1"
-      className="h-24 w-24 rounded-lg object-cover"
-    />
-  </div>
+              { cartItems.length > 0 ? 
+                cartItems.map((item, index) => (
+                  <Card className="p-6 w-full h-full flex items-center bg-white shadow-md rounded-lg space-x-6">
+                    <IconButton
+                      size="sm"
+                      color="red"
+                      variant="text"
+                      className="!absolute top-4 right-4 rounded-full"
+                      onClick={() => handleRemoveFromCart(item._id)}
+                    >
+                     <FaRegTrashAlt size={20}/>
+                    </IconButton>
+                    <div className="flex-shrink-0">
+                      <Image
+                        width={100}
+                        height={100}
+                        src={item.file[0]}
+                        alt="Product 1"
+                        className="h-24 w-24 rounded-lg object-cover"
+                      />
+                    </div>
 
-  <div className="flex flex-col justify-between">
-    <p className="text-lg font-bold text-gray-800">Product 1</p>
-    <p className="text-gray-500">$50</p>
-    <p className="text-sm text-gray-600">Quantity: 1</p>
-  </div>
-</Card>
+                    <div className="flex flex-col justify-between items-center gap-2">
+                      <p className="text-lg font-bold text-gray-800 py-2">{item.productname}</p>
+                      <p className="text-gray-500">{item.price}</p>
+                      {/* <p className="text-sm text-gray-600">Quantity: 1</p> */}
+                    </div>
+                  </Card>
+                )
+              ) :<p className="text-center font-bold myfont text-xl">Your cart is empty.</p>
+              }
 
-  <Card className="p-6 w-full h-full flex items-center bg-white shadow-md rounded-lg space-x-6">
-  <div className="flex-shrink-0">
-    <Image
-      width={100}
-      height={100}
-      src={Product2}
-      alt="Product 2"
-      className="h-24 w-24 rounded-lg object-cover"
-    />
-  </div>
 
-  <div className="flex flex-col justify-between">
-    <p className="text-lg font-bold text-gray-800">Product 2</p>
-    <p className="text-gray-500">$30</p>
-    <p className="text-sm text-gray-600">Quantity: 2</p>
-  </div>
-</Card>
 
-</div>
+
+            </div>
 
           </div>
         );
@@ -83,7 +90,7 @@ export function StepperCard() {
               <Card className="p-4 w-full ">
                 <span className="myfont font-bold py-3">Credit Card</span>
                 <div className="flex flex-col gap-4">
-                <Input label="Card Number" />
+                  <Input label="Card Number" />
                   <Input label="Expiration Date" />
                   <Input label="CVV" />
                 </div>
@@ -105,9 +112,10 @@ export function StepperCard() {
         activeStep={activeStep}
         isLastStep={(value) => setIsLastStep(value)}
         isFirstStep={(value) => setIsFirstStep(value)}
+        className=" z-0 relative"
       >
         <Step onClick={() => setActiveStep(0)}>
-          <IoBagAddOutline className="h-5 w-5" />
+          <IoBagAddOutline className="h-5 w-5 " />
         </Step>
         <Step onClick={() => setActiveStep(1)}>
           <MdOutlineShoppingCart className="h-5 w-5" />

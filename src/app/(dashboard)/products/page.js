@@ -6,6 +6,7 @@ import { getAllProducts } from '@/app/API/response';
 import { errorNotify, successNotify } from '@/components/Toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductSuccess } from '@/app/Redux/Slices/allProducts';
+import { addToCart } from '@/app/Redux/Slices/addToCart';
 
 const Product = () => {
   const dispatch = useDispatch()
@@ -24,16 +25,20 @@ const Product = () => {
       }
   
   }
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
   useEffect(()=>{
     getAllProduct()
-  },[getAllProduct])
+  },[])
+
   return (
     <Suspense fallback={<ProductSkeleton/>}>
      {   isLoader ?<div className='  w-full  mx-auto '><Loader/></div>:
       <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4 pb-10 pt-4 flex-grow max-w-screen-xl  w-full min-h-screen max-h-full mx-auto'>
      
        { allProducts.map((item,index)=>(
-            <CardDefault key={index} url={item?.file[0]} navigate={item._id} title={item?.productname} price1={item?.price} price2={item?.price*250} />
+            <CardDefault key={index} url={item?.file[0]} navigate={item._id} title={item?.productname} price1={item?.price} price2={item?.price*250} onAddToCart={() => handleAddToCart(item)}/>
           ))
         }
         </div>}

@@ -1,30 +1,37 @@
 "use client";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-
-const Paymentcard = [
-  {
-    name: "Sub Total",
-    price: 400,
-  },
-  {
-    name: "Discount",
-    price: 420,
-  },
-  {
-    name: "Tax",
-    price: 340,
-  },
-  {
-    name: "Shipping",
-    price: 520,
-  },
-  {
-    name: "Total",
-    price: 780,
-  },
-];
+import { useSelector } from "react-redux";
 
 export function PaymentCard() {
+  const cartItems = useSelector((state) => state.cart.items);
+  const subtotal =  cartItems.reduce((acc, item) => acc + Number(item.price), 0);
+  const discount = subtotal * 0.10; 
+  const tax = (subtotal - discount) * 0.05; 
+  const shipping = 500;
+  const total = subtotal - discount + tax + shipping;
+  
+  const Paymentcard = [
+    {
+      name: "Sub Total",
+      price: subtotal.toFixed()
+    },
+    {
+      name: "Discount",
+      price: discount.toFixed()
+    },
+    {
+      name: "Tax",
+      price: tax.toFixed(),
+    },
+    {
+      name: "Shipping",
+      price: shipping.toFixed(),
+    },
+    {
+      name: "Total",
+      price: total.toFixed(),
+    },
+  ];
   return (
     <Card className="w-full max-w-md mx-auto shadow-lg border border-gray-200 rounded-lg bg-white">
       <CardBody>
@@ -42,21 +49,29 @@ export function PaymentCard() {
               className={`flex items-center justify-between py-2 px-3 rounded-lg ${index === Paymentcard.length - 1 ? "bg-gray-100 font-bold" : ""
                 }`}
             >
+              {
+                name=="Total" ? 
+                <div className=" bg-blue-50 p-4 rounded-lg w-full">
+                <Typography variant="h6" color="blue-gray" className="text-lg font-bold text-center">
+                  Grand Total: Rs.{price}
+                </Typography>
+              </div>:
+              <>
               <Typography variant="body1" color="blue-gray" className="text-lg">
-                {name}
-              </Typography>
-              <Typography variant="body1" color="blue-gray" className="text-lg">
-                ${price}
-              </Typography>
+              {name}
+            </Typography>
+            <Typography variant="body1" color="blue-gray" className="text-lg">
+              Rs.{price}
+            </Typography>
+            </>
+              }
+              
             </div>
+            
           ))}
         </div>
 
-        <div className="mt-6 bg-blue-50 p-4 rounded-lg">
-          <Typography variant="h6" color="blue-gray" className="text-lg font-bold text-center">
-            Grand Total: ${Paymentcard.reduce((total, item) => total + item.price, 0)}
-          </Typography>
-        </div>
+        
       </CardBody>
     </Card>
   );

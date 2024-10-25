@@ -10,7 +10,6 @@ import {
 import { MdOutlineShoppingCart } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
-
 function StarIcon() {
   return (
     <svg
@@ -28,7 +27,8 @@ function StarIcon() {
   );
 }
 
-export function CardDefault({ url, title, price1, price2, navigate }) {
+export function CardDefault({ url, title, price1, price2, navigate,onAddToCart }) {
+
   return (
     <Card className="min-w-full max-w-[14rem] shadow-lg">
       <CardHeader floated={false} color="blue-gray " className="group relative">
@@ -85,20 +85,22 @@ export function CardDefault({ url, title, price1, price2, navigate }) {
           <StarIcon />
           (35)
         </Typography>
-      <Link href={`/products/${navigate}`}>
       <span className="flex justify-between items-center">
+      <Link href={`/products/${navigate}`}>
       
         <Typography variant="h5" color="blue-gray" className="font-medium myfont">
             See more
           </Typography>
+      </Link>
+
           <Button
           size="sm"
           className="opacity-100  w-fit h-8 bg-secondary text-white flex gap-2  p-2"
+          onClick={onAddToCart}
         >
           Add to Cart <MdOutlineShoppingCart className="h-4 w-4 text-black"/>
         </Button>
       </span>
-      </Link>
       </CardBody>
     </Card>
   );
