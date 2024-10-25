@@ -32,7 +32,7 @@ export function StepperCard() {
             <div className="space-y-4 w-full">
               { cartItems.length > 0 ? 
                 cartItems.map((item, index) => (
-                  <Card className="p-6 w-full h-full flex items-center bg-white shadow-md rounded-lg space-x-6">
+                  <Card key={index} className="p-6 w-full h-full flex items-center bg-white shadow-md rounded-lg space-x-6">
                     <IconButton
                       size="sm"
                       color="red"
