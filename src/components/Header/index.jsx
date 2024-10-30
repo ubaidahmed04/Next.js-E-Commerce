@@ -167,7 +167,7 @@ export function Appbar() {
           </span>
           <Link href={'/addCart'}>
             <span className=" cursor-pointer hidden lg:block">
-            <Badge content={cartItems?.length}>
+            <Badge content={cartItems?.length} className={cartItems?.length>0?'flex items-center justify-center p-0':'hidden'}>
               <GiShoppingCart size={30} />
             </Badge>
             </span>
