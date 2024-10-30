@@ -81,11 +81,9 @@ export function ProductTable() {
 
   const dispatch = useDispatch()
   const {allProducts,isLoader} = useSelector((state)=> state.allproducts)
-  console.log("redux allProducts",allProducts)
   const [limit, setLimit] = useState(10);
   const [skip, setSkip] = useState(0);
-  // let limit = 10
-  // let skip = 0
+  
   const nextPage =()=>{
     setSkip((prevSkip) => prevSkip + limit);
   }
@@ -98,7 +96,7 @@ export function ProductTable() {
     try {
       dispatch(getProductStart())
         const response = await getAllProducts(route)
-        console.log("response--->>>>", response)
+        // console.log("response--->>>>", response)
         dispatch(getProductSuccess(response.data))
         
         
@@ -112,17 +110,7 @@ export function ProductTable() {
     getAllProduct()
   },[limit,skip])
 
-  // const getAllProduct = async() => {
-  //   const route = '/product'  
-  //   try {
-  //       dispatch(getProductStart())
-  //       const response = await getAllProducts(route)
-  //       console.log("response--->>>>", response)
-  //       dispatch(getProductSuccess(response.data))        
-  //     } catch (error) {
-  //       errorNotify(error ||response.message)
-  //     }
-  // }
+ 
  // delete products 
  const deleteSingleProduct = async(id) =>{
   const response = await DeleteProduct(`/product/${id}`)

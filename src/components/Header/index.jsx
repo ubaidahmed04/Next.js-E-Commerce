@@ -91,7 +91,7 @@ export function Appbar() {
         className=" myfont"
       >
        { !isUser ?
-          <Link href="/about" className={`${pathName === '/products' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
+          <Link href="/about" className={`${pathName === '/about' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
           About
         </Link> :
           <Link href="/ProductList" className={`${pathName === '/AddProduct' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>

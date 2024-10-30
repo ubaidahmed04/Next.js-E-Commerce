@@ -11,17 +11,17 @@ export function DefaultPagination({ active, previousPage, nextPage }) {
   });
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-2">
       <Button
         variant="text"
-        className="flex items-center gap-2"
+        className="flex items-center gap-2 border-2 shadow-md"
         onClick={previousPage}
         disabled={active === 1}
       >
-        <TiArrowLeft strokeWidth={2} className="h-4 w-4" /> Previous
+        <TiArrowLeft strokeWidth={2} className="h-4 w-4 hidden sm:block" /> Previous
       </Button>
       <div className="flex items-center gap-2">
-        {[1, 2, 3, 4, 5].map((index) => (
+        {[1, 2,].map((index) => (
           <IconButton key={index} {...getItemProps(index)}>
             {index}
           </IconButton>
@@ -29,12 +29,12 @@ export function DefaultPagination({ active, previousPage, nextPage }) {
       </div>
       <Button
         variant="text"
-        className="flex items-center gap-2"
+        className="flex items-center gap-2 border-2 shadow-md"
         onClick={nextPage}
         disabled={active === 5} // Assuming you have a max of 5 pages
       >
         Next
-        <TiArrowRight strokeWidth={2} className="h-4 w-4" />
+        <TiArrowRight strokeWidth={2} className="h-4 w-4 hidden sm:block" />
       </Button>
     </div>
   );
