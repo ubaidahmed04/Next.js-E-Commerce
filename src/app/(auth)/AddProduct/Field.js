@@ -21,11 +21,13 @@ const InputFields = ({label, type, placeholder, name }) => {
         as="select"
         className="!w-full !px-3 !py-3 !bg-white !border border-blue-gray-300 rounded-md shadow-sm focus:!outline-none focus:!ring-2  !transition duration-200 ease-in-out !text-gray-700"
       >
-        <option value="">Select a category</option>
-          <option  value="laptop">laptop</option>
-          <option  value="LCD">LCD</option>
-          <option  value="games">Games</option>
-          <option  value="accessories">Accessories</option>
+          <option  value="">Select a category</option>
+          <option  value="airbuds">Airbuds</option>
+          <option  value="cloths">Cloths</option>
+          <option  value="glasses">Glasses</option>
+          <option  value="homeAccessories">Home Accessories</option>
+          <option  value="perfumes">Perfumes</option>
+          <option  value="heads">Heads</option>
       </Field>
       </> 
     );
