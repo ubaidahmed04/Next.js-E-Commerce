@@ -28,6 +28,8 @@ const InputFields = ({label, type, placeholder, name }) => {
           <option  value="homeAccessories">Home Accessories</option>
           <option  value="perfumes">Perfumes</option>
           <option  value="heads">Heads</option>
+          <option  value="watch">Watch</option>
+          <option  value="jackets">Jackets</option>
       </Field>
       </> 
     );
