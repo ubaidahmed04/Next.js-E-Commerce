@@ -59,7 +59,7 @@ const Product = () => {
           ))
         }
         </div>}
-        <span className={allProducts.length < 1 ? 'hidden':'flex justify-center items-center py-4'}>
+        <span className={allProducts.length == 0 ? 'flex justify-center items-center py-4':'flex justify-center items-center py-4'}>
           <DefaultPagination nextPage={nextPage} previousPage={previousPage}/>
 
         </span>

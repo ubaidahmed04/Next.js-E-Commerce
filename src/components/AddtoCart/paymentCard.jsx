@@ -25,11 +25,11 @@ export function PaymentCard() {
     },
     {
       name: "Shipping",
-      price: shipping.toFixed(),
+      price: cartItems?.length > 0 || null ?  shipping.toFixed() : 0 ,
     },
     {
       name: "Total",
-      price: total.toFixed(),
+      price: cartItems?.length > 0 || null ? total.toFixed() :0,
     },
   ];
   return (
