@@ -32,7 +32,8 @@ const ProductDetails = ({params }) => {
       <span className='flex-grow max-w-screen-xl h-full'>
         {
           isLoading? <span className='flex-grow max-w-screen-xl h-screen'><Loader/></span> : 
-       <ProductDetail url={singleData.file?singleData?.file[0]:Product11} title={singleData?.productname} price={singleData?.price}/> 
+       <ProductDetail url={singleData.file?singleData?.file[0]:Product11} title={singleData?.productname} price={singleData?.price}
+        description={singleData?.description}/> 
         }
        </span>
     </Suspense>

@@ -49,7 +49,7 @@ export function Appbar() {
   const { isUser } = useSelector((state) => state.currUser)
   const cartItems = useSelector((state) => state.cart.items);
   
-  console.log("currentUser",isUser)
+  // console.log("currentUser",cartItems)
   React.useEffect(() => {
     window.addEventListener(
       "resize",
@@ -167,7 +167,9 @@ export function Appbar() {
           </span>
           <Link href={'/addCart'}>
             <span className=" cursor-pointer hidden lg:block">
-            <Badge content={cartItems?.length} className={cartItems?.length>0?'flex items-center justify-center p-0':'hidden'}>
+            <Badge 
+              content={cartItems?.length}
+              className={cartItems?.length == 0|| null? 'hidden':'flex items-center justify-center p-0'}>
               <GiShoppingCart size={30} />
             </Badge>
             </span>
@@ -230,7 +232,9 @@ export function Appbar() {
 
         <Link href={'/addCart'}>
             <span className=" cursor-pointer lg:hidden">
-            <Badge content={cartItems?.length}>
+            <Badge content={cartItems?.length}
+             className={cartItems?.length == 0 || null? 'hidden':'flex items-center justify-center p-0'}
+            >
               <GiShoppingCart size={30} />
             </Badge>
             </span>

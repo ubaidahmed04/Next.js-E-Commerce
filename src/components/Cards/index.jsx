@@ -27,8 +27,8 @@ function StarIcon() {
   );
 }
 
-export function CardDefault({ url, title, price1, price2, navigate,onAddToCart }) {
-
+export function CardDefault({ url, title, price1, price2, navigate,onAddToCart,quantity }) {
+console.log("price2",typeof(price2))
   return (
     <Card className="min-w-full max-w-[14rem] shadow-lg">
       <CardHeader floated={false} color="blue-gray " className="group relative">
@@ -71,7 +71,7 @@ export function CardDefault({ url, title, price1, price2, navigate,onAddToCart }
           className="flex items-center gap-1.5 font-medium text-lg"
         >
           <span className="text-secondary fontbold myfont">{`Rs.${price1}`}</span>
-          <del className="text-gray-700 mr-2 myfont">{`Rs.${price2}`}</del>
+          <del className="text-gray-700 mr-2 myfont">{`Rs.${parseInt(price2)+300 }`}</del>
         </Typography>
 
         <Typography
@@ -83,7 +83,7 @@ export function CardDefault({ url, title, price1, price2, navigate,onAddToCart }
           <StarIcon />
           <StarIcon />
           <StarIcon />
-          (35)
+          ({quantity})
         </Typography>
       <span className="flex justify-between items-center">
       <Link href={`/products/${navigate}`}>

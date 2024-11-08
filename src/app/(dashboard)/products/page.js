@@ -47,14 +47,19 @@ const Product = () => {
   return (
     <Suspense fallback={<ProductSkeleton/>}>
      {   isLoader ?<div className='  w-full  mx-auto '><Loader/></div>:
-      <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4 pb-10 pt-4 flex-grow max-w-screen-xl  w-full min-h-screen max-h-full mx-auto'>
+      <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4 pb-10 pt-4 flex-grow max-w-screen-xl  w-full min-h-screen max-h-full '>
      
-       { allProducts.map((item,index)=>(
-            <CardDefault key={index} url={item?.file[0]} navigate={item._id} title={item?.productname} price1={item?.price} price2={item?.price*250} onAddToCart={() => handleAddToCart(item)}/>
+       {
+        // isLoader ?<div className='  w-full  mx-auto '><Loader/></div>:
+
+        allProducts.length < 1 ? <div className="flex justify-center items-center max-w-4xl text-4xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Currently, there are no products available. Stay tuned—exciting new items are coming soon!</div> :
+       allProducts.map((item,index)=>(
+
+            <CardDefault key={index} url={item?.file[0]} navigate={item._id} title={item?.productname} price1={item?.price} price2={`${item?.price }`} quantity={item?.quantity} onAddToCart={() => handleAddToCart(item)} />
           ))
         }
         </div>}
-        <span className='flex justify-center items-center py-4'>
+        <span className={allProducts.length < 1 ? 'hidden':'flex justify-center items-center py-4'}>
           <DefaultPagination nextPage={nextPage} previousPage={previousPage}/>
 
         </span>

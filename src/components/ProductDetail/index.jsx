@@ -36,7 +36,7 @@ function StarIcon() {
     </svg>
   );
 }
-export function ProductDetail({title,url,price}) {
+export function ProductDetail({title, url, price, description}) {
   const [activeButton, setActiveButton] = useState(null);
 
   // Function to handle button click and set the active button
@@ -115,12 +115,10 @@ export function ProductDetail({title,url,price}) {
                 (120Review) | <span className="text-green myfont px-2">In Stock</span>
               </span>
               <span className="myfontbold text-xl md:text-2xl">
-                {price}
+               Rs {price}
               </span>
               <Typography className="myfont">
-                The place is close to Barceloneta Beach and bus stop just 2 min by
-                walk and near to &quot;Naviglio&quot; where you can enjoy the main
-                night life in Barcelona.
+             {description}
               </Typography>
               <Typography className="my-4 border-b-4 border-gray-500">
 
