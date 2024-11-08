@@ -10,10 +10,9 @@ const ProductDetails = ({params }) => {
   const { productId } = params;
   const [singleData,setSingleData] = useState('')
   const [isLoading,setIsLoading] = useState(false)
-  console.log("productId",productId,params)
+  // console.log("productId",productId,params)
   const getSingleProduct = async() => {
     const route = `/product/get/${productId}  `
-    console.log(route)
     try {
         setIsLoading(true)
         const response = await getSingleProducts(route)

@@ -28,7 +28,6 @@ function StarIcon() {
 }
 
 export function CardDefault({ url, title, price1, price2, navigate,onAddToCart,quantity }) {
-console.log("price2",typeof(price2))
   return (
     <Card className="min-w-full max-w-[14rem] shadow-lg">
       <CardHeader floated={false} color="blue-gray " className="group relative">

@@ -76,7 +76,7 @@ export function CryptoLogin() {
     try {
       
       const response = await AddProduct(route, data)
-      console.log("response--->>>>", response.message)
+      // console.log("response--->>>>", response.message)
       successNotify(response.message)
       setFileNames([])
       resetForm()

@@ -22,13 +22,13 @@ const Product = () => {
     setSkip((prevSkip) => Math.max(prevSkip - limit, 0)); 
   }
   const {allProducts,isLoader} = useSelector((state)=> state.allproducts)
-  console.log("redux allProducts",allProducts)
+  // console.log("redux allProducts",allProducts)
   const getAllProduct = async() => {
     const route = `/product?limit=${limit}&skip=${skip}`;  
     try {
       dispatch(getProductStart())
         const response = await getAllProducts(route)
-        console.log("response--->>>>", response)
+        // console.log("response--->>>>", response)
         dispatch(getProductSuccess(response.data))
         
         

@@ -55,7 +55,7 @@ const sendEmail = (values) => {
 };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log("Form Data", values);
+    // console.log("Form Data", values);
     sendEmail(values)
     resetForm();
   };

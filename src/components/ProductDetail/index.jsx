@@ -115,7 +115,7 @@ export function ProductDetail({title, url, price, description}) {
                 (120Review) | <span className="text-green myfont px-2">In Stock</span>
               </span>
               <span className="myfontbold text-xl md:text-2xl">
-               Rs {price}
+                {price}
               </span>
               <Typography className="myfont">
              {description}

@@ -43,7 +43,7 @@ const SignIn = () => {
     const user = InputDataCheck.find(
       (ele) => ele.email === values.email && ele.password === values.password
     );
-    console.log("user", user)
+    // console.log("user", user)
     if (user) {
       dispatch(LoginSuccess(user));
       resetForm()

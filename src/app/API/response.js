@@ -13,7 +13,7 @@ export const AddProduct = async (route, data) => {
   };
   try {
     const res = await axios.request(config);
-    console.log("res",res)
+    // console.log("res",res)
     return res.data
 
   } catch(err) {

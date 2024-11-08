@@ -90,7 +90,7 @@ export function ProductTable() {
   const previousPage =()=>{
     setSkip((prevSkip) => Math.max(prevSkip - limit, 0)); 
   }
-  console.log("redux allProducts",allProducts)
+  // console.log("redux allProducts",allProducts)
   const getAllProduct = async() => {
     const route = `/product?limit=${limit}&skip=${skip}`;  
     try {
@@ -114,7 +114,7 @@ export function ProductTable() {
  // delete products 
  const deleteSingleProduct = async(id) =>{
   const response = await DeleteProduct(`/product/${id}`)
-  console.log(response)
+  // console.log(response)
   dispatch(deleteProduct(id))
   successNotify("Product Delete Successfully")
 
