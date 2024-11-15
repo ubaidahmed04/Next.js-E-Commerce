@@ -25,6 +25,8 @@ import { usePathname, useRouter } from 'next/navigation'
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "@/app/Redux/Slices/UserSlice";
+import Image from "next/image";
+import logoImg from '@/app/public/Images/mainLogo.png'
 const profileMenuItems = [
   {
     label: "My Profile",
@@ -150,13 +152,22 @@ export function Appbar() {
   return (
     <Navbar className="sticky top-0 z-10 h-max max-w-full bg-gray-100 rounded-none px-2 py-2 lg:px-8 lg:py-4">
       <div className="flex items-center justify-between text-blue-gray-900 ">
-        <Typography
+        {/* <Typography
           as="a"
           href="/"
           className="mr-1 sm:mr-4 cursor-pointer  text-sm md:text-xl font-bold py-1.5 sm:myfontbold"
         >
           ShopWeb
-        </Typography>
+        </Typography> */}
+        <Link href="/">
+        <Image
+          height={150}
+          width={100}
+          src={logoImg}
+          alt="Logo"
+          className="h-full w-full object-contain"
+        />
+        </Link>
         <div className="mr-4 hidden lg:block">{navList}</div>
         <div className="flex items-center sm:gap-4">
           <span className="hidden sm:block">
