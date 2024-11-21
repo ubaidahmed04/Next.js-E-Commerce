@@ -21,11 +21,16 @@ export const productSlice = createSlice({
       state.allProducts = state.allProducts.filter((elem)=>elem._id !== action.payload)
       state.isLoader = false
 
+    },
+    updateProducts: (state,action) => {
+      const Index = state.allProducts.findIndex(product => product._id === action.payload._id);
+      if(Index !== -1 ){
+        state.allProducts[Index] = action.payload;
+      }
     }
-    
   },
 })
 
-export const {getProductStart,getProductSuccess,deleteProduct} = productSlice.actions
+export const {getProductStart, getProductSuccess, deleteProduct, updateProducts} = productSlice.actions
 
 export default productSlice.reducer

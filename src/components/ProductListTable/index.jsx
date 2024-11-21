@@ -22,11 +22,13 @@ import {
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DeleteProduct, getAllProducts } from "@/app/API/response";
-import { deleteProduct, getProductStart, getProductSuccess } from "@/app/Redux/Slices/allProducts";
+import { DeleteProduct, getAllProducts, getSingleProducts } from "@/app/API/response";
+import { deleteProduct, getProductStart, getProductSuccess, updateProducts } from "@/app/Redux/Slices/allProducts";
 import { errorNotify,successNotify } from "../Toast";
 import {Loader} from "@/components";
 import { DefaultPagination } from "@/app/(dashboard)/products/Paginition";
+import DeleteProductModal from "../ConfirmationModal/confirmationModal";
+import { EditProduct } from "../ConfirmationModal/EditModal";
  
 const TABLE_HEAD = ["Image", "Price", "Category", "Brand", "Quantity", "Action"];
  
@@ -83,7 +85,10 @@ export function ProductTable() {
   const {allProducts,isLoader} = useSelector((state)=> state.allproducts)
   const [limit, setLimit] = useState(10);
   const [skip, setSkip] = useState(0);
-  
+  const [DeleteModal, setDeleteModal] = useState(false);
+  const [editModal, seteditModal] = useState(false);
+  const [singleProduct, setSingleProduct] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
   const nextPage =()=>{
     setSkip((prevSkip) => prevSkip + limit);
   }
@@ -110,37 +115,64 @@ export function ProductTable() {
     getAllProduct()
   },[limit,skip])
 
- 
- // delete products 
- const deleteSingleProduct = async(id) =>{
-  const response = await DeleteProduct(`/product/${id}`)
-  // console.log(response)
-  dispatch(deleteProduct(id))
-  successNotify("Product Delete Successfully")
-
-}
   useEffect(()=>{
     getAllProduct()
   },[])
 
-
-  const [openModal, setOpenModal] = useState(false); // To control modal visibility
+// open  delete  product modal
+const handleOpenDelModal = (id) => {
+  setSelectedId(id)
+  setDeleteModal(true);
+};
+// close delete modal 
+const closeDelModal = () =>{
+  setDeleteModal(false)
+  setSelectedId(null);
+}
+//   delete  product Function
+const deleteProductFunc = async(id) => {
+  const response = await DeleteProduct(`/product/${id}`)
+  console.log(response)
+  dispatch(deleteProduct(id))
+  successNotify("Product Delete Successfully")
+  closeDelModal()
+}
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const handleOpenModal = (product) => {
-    setSelectedProduct(product); // Set selected product data
-    setOpenModal(true);          // Open modal
+  
+  // Open  edit product modal
+  const handleOpenModal = (productId) => {
+    setSelectedProduct(productId); // Set selected product data
+    GetSingleProduct(productId)
+    seteditModal(true);          // Open modal
   };
 
+// close  edit product modal
   const handleCloseModal = () => {
-    setOpenModal(false);         // Close modal
-    setSelectedProduct(null);    // Clear selected product data
+    seteditModal(false);         // Close modal
+    setSelectedProduct(null);  
+    setSingleProduct(null)  // Clear selected product data
   };
+// get single product 
+const GetSingleProduct = async(id) =>{
+  const response = await getSingleProducts(`/product/get/${id}`)
+  console.log("response",response)
+  setSingleProduct(response.data)
+}
+const handleUpdateProduct = async (updatedData) => {
+  try {
+    const response = await EditProduct(`/product/${singleProduct?._id}`, updatedData);
+    console.log("API Response:", response);
 
-  const handleUpdateProduct = () => {
-    // Logic to update the product using selectedProduct state
-    // Close modal after update
-    handleCloseModal();
-  };
+    if (response) {
+      dispatch(updateProducts(response.data)); // Update the product in Redux
+      setSingleProduct(response.data); // Update local state
+      errorNotify("Product updated successfully!");
+    }
+  } catch (error) {
+    console.error("Error updating product:", error);
+    errorNotify("Failed to update the product!");
+  }
+};
   return (
     <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -258,12 +290,12 @@ export function ProductTable() {
                     <td className={classes}>
                       <Tooltip content="Edit Product">
                         <IconButton variant="text" >
-                          <HiOutlinePencilAlt className="h-4 w-4" />
+                          <HiOutlinePencilAlt className="h-4 w-4" onClick={()=>handleOpenModal(item._id)} />
                           
                         </IconButton>
                       </Tooltip>
                       <Tooltip content="Delete Product">
-                        <IconButton variant="text" onClick={()=>deleteSingleProduct(item._id)}>
+                        <IconButton variant="text" onClick={()=>handleOpenDelModal(item._id)}>
                           <FaRegTrashAlt className="h-4 w-4" />
                         </IconButton>
                       </Tooltip>
@@ -275,28 +307,15 @@ export function ProductTable() {
           </tbody>
         </table>
       </CardBody>
-      <Dialog open={openModal} handler={handleCloseModal}>
-        <DialogHeader>Edit Product</DialogHeader>
-        <DialogBody>
-          {selectedProduct && (
-            <div className="flex flex-col gap-4">
-              <Input label="Name" value={selectedProduct.name} />
-              <Input label="Price" value={selectedProduct.amount} />
-              <Input label="Category" value={selectedProduct.category} />
-              <Input label="Brand" value={selectedProduct.brand} />
-              <Input label="Quantity" value={selectedProduct.quantity} />
-            </div>
-          )}
-        </DialogBody>
-        <DialogFooter>
-          <Button variant="text" color="red" onClick={handleCloseModal}>
-            Cancel
-          </Button>
-          <Button variant="gradient" color="blue" onClick={handleUpdateProduct}>
-            Save
-          </Button>
-        </DialogFooter>
-      </Dialog>
+      {/* delete modal  */}
+      <DeleteProductModal openModal={DeleteModal}   onSubmit={() => deleteProductFunc(selectedId)} onClose={closeDelModal}/>
+      {/* delete modal  */}
+      {/* Edit modal  */}
+      <EditProduct openModal={editModal}  data={singleProduct}  onSubmit={handleUpdateProduct} onClose={handleCloseModal}/>
+
+      {/* Edit modal  */}
+    
+      
       <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
       <DefaultPagination nextPage={nextPage} previousPage={previousPage}/>
         

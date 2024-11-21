@@ -56,6 +56,26 @@ try {
   return err.response.data
 }
 };
+// update  product
+export const EditProduct = async (route,  data) => { // Accept data as an argument
+  const config = {
+    url: URL + route, 
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      // Authorization: `Bearer ${token}`
+    },
+    data: JSON.stringify(data)
+  };
+
+  try {
+    const res = await axios.request(config);
+    return res.data;
+  } catch (err) {
+    return err.response ? err.response.data : { error: "Network error" };
+  }
+};
+
 
 export const DeleteProduct = async (route) => {
   const config = {
