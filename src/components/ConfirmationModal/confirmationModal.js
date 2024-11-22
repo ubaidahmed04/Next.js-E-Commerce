@@ -43,7 +43,7 @@ const DeleteModal = ({ openModal, onClose, onSubmit }) => {
              close
            </Button>
            <Button  className="bg-secondary
-            text-black" onClick={onSubmit}>
+            text-white" onClick={onSubmit}>
            Yes, Sure
            </Button>
          </DialogFooter>

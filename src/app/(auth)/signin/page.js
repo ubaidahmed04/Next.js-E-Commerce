@@ -33,7 +33,7 @@ const SignIn = () => {
     const InputDataCheck = [
       {
         email: "admin@gmail.com",
-        password: "123456"
+        password: "Admin@123"
       },
       {
         email: "sales@gmail.com",
