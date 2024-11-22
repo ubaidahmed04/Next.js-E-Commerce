@@ -79,7 +79,6 @@ const Home = () => {
           <Category productName="Watch" url={Category3} />
           <Category productName="Camera" url={Category4} />
           <Category productName="Gaming" url={Category6} />
-
         </span>
         <span className=''>
         <Announcement/>

@@ -9,9 +9,12 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-           secondary:"#112F3A",
-           black:"#000000",
-           green:"#00FF66"
+           secondary:"#662249",
+           black:"#1B1931",
+           green:"#83A6CE",
+          //  secondary:"#935b88",
+          //  black:"#0B1B32",
+          //  green:"#83A6CE",
       },
     },
   },

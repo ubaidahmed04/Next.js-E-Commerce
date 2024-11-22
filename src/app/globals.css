@@ -6,12 +6,12 @@
 /* react toastify  */
 @import 'react-toastify/dist/ReactToastify.css';
 .myfont {
-  font-weight: 350; /* Apply any weight here */
+  font-weight: 350; 
   font-optical-sizing: auto;
   font-style: normal;
 }
 .fontbold {
-  font-weight: 700; /* Apply any weight here */
+  font-weight: 700; 
   font-optical-sizing: auto;
   font-style: normal;
 }
