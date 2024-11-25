@@ -14,7 +14,7 @@ export function DefaultPagination({ active, previousPage, nextPage }) {
     <div className="flex items-center gap-2">
       <Button
         variant="text"
-        className="flex items-center gap-2 border-2 shadow-md"
+        className="flex text-white bg-secondary hover:text-black items-center gap-2 border-2 shadow-md"
         onClick={previousPage}
         disabled={active === 1}
       >
@@ -29,7 +29,7 @@ export function DefaultPagination({ active, previousPage, nextPage }) {
       </div>
       <Button
         variant="text"
-        className="flex items-center gap-2 border-2 shadow-md"
+        className="flex items-center text-white bg-secondary hover:text-black gap-2 border-2 shadow-md"
         onClick={nextPage}
         disabled={active === 5} // Assuming you have a max of 5 pages
       >

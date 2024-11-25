@@ -46,7 +46,7 @@ const Product = () => {
 
   return (
     <Suspense fallback={<ProductSkeleton/>}>
-     {   isLoader ?<div className='  w-full  mx-auto '><Loader/></div>:
+     {   isLoader ?<div className='  w-full  mx-auto '><ProductSkeleton/></div>:
       <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4 pb-10 pt-4 flex-grow max-w-screen-xl  w-full min-h-screen max-h-full '>
      
        {

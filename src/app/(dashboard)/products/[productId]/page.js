@@ -30,7 +30,7 @@ const ProductDetails = ({params }) => {
     <Suspense fallback={<ProductDetailSkeleton/>}>
       <span className='flex-grow max-w-screen-xl h-full'>
         {
-          isLoading? <span className='flex-grow max-w-screen-xl h-screen'><Loader/></span> : 
+          isLoading? <span className='flex-grow max-w-screen-xl h-screen'><ProductDetailSkeleton/></span> : 
        <ProductDetail url={singleData.file?singleData?.file[0]:Product11} title={singleData?.productname} price={singleData?.price}
         description={singleData?.description}/> 
         }

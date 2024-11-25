@@ -29,7 +29,7 @@ function StarIcon() {
 
 export function CardDefault({ url, title, price1, price2, navigate,onAddToCart,quantity }) {
   return (
-    <Card className="min-w-full h-fit bg-blue-gray-200 max-w-[14rem] shadow-lg">
+    <Card className="min-w-full h-fit bg-blue-gray-50 max-w-[14rem] shadow-lg">
       <CardHeader floated={false} color="blue-gray " className="group relative">
         <Image
           height={200}
@@ -87,7 +87,7 @@ export function CardDefault({ url, title, price1, price2, navigate,onAddToCart,q
       <span className="flex justify-between items-center">
       <Link href={`/products/${navigate}`}>
       
-        <Typography variant="h5" color="blue-gray" className="font-medium myfont">
+        <Typography variant="h5" className="font-medium text-blue-500 hover:underline myfont">
             See more
           </Typography>
       </Link>
@@ -97,7 +97,7 @@ export function CardDefault({ url, title, price1, price2, navigate,onAddToCart,q
           className="opacity-100  w-fit h-8 bg-secondary text-white flex gap-2  p-2"
           onClick={onAddToCart}
         >
-          Add to Cart <MdOutlineShoppingCart className="h-4 w-4 text-black"/>
+          Add to Cart <MdOutlineShoppingCart className="h-4 w-4 text-white"/>
         </Button>
       </span>
       </CardBody>
