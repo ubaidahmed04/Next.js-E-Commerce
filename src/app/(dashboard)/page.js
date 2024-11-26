@@ -1,6 +1,6 @@
 "use client"
 import { CarouselDefault, Title, Category, ProductCard,Announcement,UpperFooter, } from '@/components'
-import React, { lazy, Suspense, useEffect, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import Category1 from "@/app/public/Images/Category1.png";
 import Category2 from "@/app/public/Images/category2.png"
 import Category3 from "@/app/public/Images/Category3.png";
@@ -21,6 +21,8 @@ import { Button } from '@material-tailwind/react';
 import Link from 'next/link';
 import { DashboardSkeleton } from './dashboardSkeleton';
 import { useSelector } from 'react-redux';
+import { useInView, motion } from 'framer-motion';
+
 // const CardDefault = lazy(() => import('@/components/Cards').then(module => ({ default: module.CardDefault })));
 const ShowCard = lazy(() => import('@/components/ShowCard').then(module => ({ default: module.ShowCard })));
 const Arrival = lazy(() => import('@/components/Arrival').then(module => ({ default: module.Arrival })));
@@ -28,6 +30,8 @@ const Arrival = lazy(() => import('@/components/Arrival').then(module => ({ defa
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const {isUser} = useSelector((state)=>state.currUser)
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
@@ -41,9 +45,15 @@ const Home = () => {
   }
   return (
     <div className='py-4'>
-      <CarouselDefault />
-      <div className='px-4'>
 
+      <motion.div 
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0 }} >
+      <CarouselDefault />
+      </motion.div>
+
+      <div className='px-4'>
         <Title title='Todays' Subtitle='Flash Sales' />
         <span className='flex gap-3 items-center mt-4 '>
           <span className='flex flex-col justify-center'>
@@ -71,7 +81,7 @@ const Home = () => {
           <ShowCard url={Product3} title='product 1' price1={1200} price2={1500} />
           <ShowCard url={Product4} title='product 1' price1={1200} price2={1500} />
         </span>
-
+  
         <Title title='Categories' Subtitle='Browse By Category' />
         <span className='flex gap-4 flex-wrap items-center justify-center'>
           <Category productName="Phone" url={Category1} />

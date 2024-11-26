@@ -5,6 +5,7 @@ import AboutSectionSkeleton from './AboutSkeleton'
 const About = () => {
   return (
     <Suspense fallback={<AboutSectionSkeleton/>}>
+      
       <AboutSection/>
     </Suspense>
   )

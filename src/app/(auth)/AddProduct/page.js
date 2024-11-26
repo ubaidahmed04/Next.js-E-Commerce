@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { AddProduct } from "@/app/API/response";
 import { errorNotify, successNotify } from "@/components/Toast";
 import { ToastContainer } from "react-toastify";
+import { motion } from 'framer-motion'
 
 
 export function CryptoLogin() {
@@ -106,6 +107,12 @@ export function CryptoLogin() {
     }
   }, [isUser, router]);
   return (
+    <motion.div
+    initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0 }}
+    >
+
     <Card
       shadow={false}
       className="md:px-24 md:py-8 py-4 border border-gray-300"
@@ -224,6 +231,8 @@ export function CryptoLogin() {
       </CardBody>
       <ToastContainer/>
     </Card>
+    </motion.div>
+
   );
 }
 

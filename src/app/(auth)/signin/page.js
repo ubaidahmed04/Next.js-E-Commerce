@@ -10,6 +10,8 @@ import { LoginSuccess } from "@/app/Redux/Slices/UserSlice";
 import { useDispatch } from "react-redux";
 import { errorNotify, successNotify } from "@/components/Toast";
 import { ToastContainer } from "react-toastify";
+import { motion } from 'framer-motion'
+
 const SignIn = () => {
   const router = useRouter()
   const dispatch = useDispatch()
@@ -63,7 +65,11 @@ const SignIn = () => {
   return (
     <Suspense fallback={<LoginSkeleton />}>
       <div className="rounded-3xl border border-stroke w-full h-[80vh]   bg-[#e6e8eb] flex items-center justify-center shadow-lg shadow-gray-500">
-        <div className="flex flex-wrap items-center justify-center w-full h-full ">
+        <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0 }}
+        className="flex flex-wrap items-center justify-center w-full h-full ">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 py-17.5 text-center">
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
@@ -241,7 +247,7 @@ const SignIn = () => {
               )}
             </Formik>
           </div>
-        </div>
+        </motion.div>
       <ToastContainer/>
 
       </div>

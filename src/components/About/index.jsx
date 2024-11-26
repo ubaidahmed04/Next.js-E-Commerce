@@ -8,10 +8,16 @@ import { aboutimg1,aboutimg2,aboutimg3 } from "@/app/public/const/base64";
 import Image from 'next/image';
 import { UpperFooter }  from '@/components'
 import {ProfileCard} from './AboutCard'
+import { motion } from 'framer-motion'
+
 export const AboutSection = () => {
   return (
     <div className='px-4'>
-        <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center gap-4 w-full py-8 '>
+        <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0 }}
+         className='grid grid-cols-1 md:grid-cols-2 justify-items-center gap-4 w-full py-8 '>
             <Image
           height={200}
           width={300}
@@ -32,7 +38,7 @@ export const AboutSection = () => {
                 </span>
             </span>
            
-        </div>
+        </motion.div>
         <span className='  grid grid-cols-2 md:grid-cols-4 gap-4 py-5'>
         <UpperFooter  subtitle='Sales active our sites'  customStyle={'border-2'} target='10.5K' />
         <UpperFooter  subtitle='Monthly product sale'  customStyle={'border-2'} target='10.5K'/>
@@ -45,11 +51,15 @@ export const AboutSection = () => {
                 <ProfileCard url={About2} base64url={aboutimg3}/>
         </span>
         <span>
-        <span className=' grid grid-cols-2 md:grid-cols-3   gap-2  py-5'>
+        <motion.div 
+     initial={{ opacity: 0, x: -100 }}
+     animate={{ opacity: 1, x: 0 }}
+     transition={{ duration: 0.4, delay: 0 }}
+        className=' grid grid-cols-2 md:grid-cols-3   gap-2  py-5'>
         <UpperFooter title='Free And Fast Delivery' subtitle='free delivery for all orders over $140'/>
         <UpperFooter title='24/7 customer service' subtitle='Friendly 24/7 customer support'/>
         <UpperFooter title='money back guarantee ' subtitle='we return money within 30 days'/>
-        </span>
+        </motion.div>
         </span>
     </div>
   )

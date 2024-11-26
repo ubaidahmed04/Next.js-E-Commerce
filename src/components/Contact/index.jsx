@@ -1,6 +1,8 @@
 "use client"
 import React, { Suspense } from 'react'
 import { ContactForm } from './Contactform'
+import { motion } from 'framer-motion'
+
 import {
     Card,
     CardBody,
@@ -14,7 +16,11 @@ export const Contact = () => {
   return (
     <Suspense fallback={<ContactSkeleton/>} >
         <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center md:justify-items-start  py-8 mx-auto'>
-            <span >
+            <motion.div 
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0 }}
+            >
             <Card className="mt-6 w-72 sm:w-96 shadow-lg ">
       <CardBody className='flex flex-col gap-4'>
         <span className='flex items-center gap-4'>
@@ -54,9 +60,16 @@ export const Contact = () => {
       <CardFooter className="pt-0">
       </CardFooter>
     </Card>
-            </span>
+            </motion.div>
             <span className='py-4 lg:py-0'>
+                <motion.div 
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0 }}
+                >
+
                 <ContactForm/>
+                </motion.div>
             </span>
         </div>
     </Suspense>
