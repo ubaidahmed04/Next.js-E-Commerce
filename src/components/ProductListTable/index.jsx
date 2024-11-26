@@ -217,7 +217,23 @@ const handleUpdateProduct = async (updatedData) => {
             </tr>
           </thead>
           <tbody>
-            { isLoader ?<div className='w-full flex justify-center flex-col items-center pl-32 md:pl-80'><span><Loader/></span></div> :
+            { isLoader ?
+            Array(10)
+            .fill(0)
+            .map((_, index) => (
+              <tr key={index}>
+                {TABLE_HEAD.map((_, colIndex) => (
+                  <td
+                    key={colIndex}
+                    className="p-4 border-b border-blue-gray-50 animate-pulse"
+                  >
+                    <div className="h-4 bg-blue-gray-100 rounded w-full"></div>
+                  </td>
+                ))}
+              </tr>
+            ))
+            // <div className='w-full flex justify-center flex-col items-center pl-32 md:pl-80'><span><Loader/></span></div>
+             :
               allProducts.length < 1 ? <div className="flex justify-center items-center flex-col  min-h-72 md:pl-60 max-w-xl text-4xl ">Currently, there are no products available. Stay tuned—exciting new items are coming soon!</div> :
             allProducts.map(
               (item,index,) => {
