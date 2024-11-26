@@ -11,7 +11,7 @@ import { removeFromCart } from "@/app/Redux/Slices/addToCart";
 export function StepperCard() {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
-
+  console.log("cartItems",cartItems)
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id)); 
   };
@@ -31,14 +31,14 @@ export function StepperCard() {
             <h2 className="text-xl font-bold mb-4">Your Cart</h2>
             <div className="space-y-4 w-full">
               { cartItems.length > 0 ? 
-                cartItems.map((item, index) => (
+                cartItems?.map((item, index) => (
                   <Card key={index} className="p-6 w-full h-full flex items-center bg-white shadow-md rounded-lg space-x-6">
                     <IconButton
                       size="sm"
                       color="red"
                       variant="text"
                       className="!absolute top-4 right-4 rounded-full"
-                      onClick={() => handleRemoveFromCart(item._id)}
+                      onClick={() => handleRemoveFromCart(item?._id)}
                     >
                      <FaRegTrashAlt size={20}/>
                     </IconButton>
@@ -46,15 +46,15 @@ export function StepperCard() {
                       <Image
                         width={100}
                         height={100}
-                        src={item.file[0]}
+                        src={item?.file[0]}
                         alt="Product 1"
                         className="h-24 w-24 rounded-lg object-cover"
                       />
                     </div>
 
                     <div className="flex flex-col justify-between items-center gap-2">
-                      <p className="text-lg font-bold text-gray-800 py-2">{item.productname}</p>
-                      <p className="text-gray-500">{item.price}</p>
+                      <p className="text-lg font-bold text-gray-800 py-2">{item?.productname}</p>
+                      <p className="text-gray-500">{item?.price}</p>
                       {/* <p className="text-sm text-gray-600">Quantity: 1</p> */}
                     </div>
                   </Card>

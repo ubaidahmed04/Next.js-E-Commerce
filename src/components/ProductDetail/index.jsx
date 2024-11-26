@@ -4,6 +4,7 @@ import Product1 from "@/app/public/Images/product1.png";
 import Product2 from "@/app/public/Images/product2.png";
 import Product3 from "@/app/public/Images/product3.png";
 import Product4 from "@/app/public/Images/product4.png";
+import { addToCart } from '@/app/Redux/Slices/addToCart';
 
 import {
   Card,
@@ -16,10 +17,13 @@ import {
   List,
   ListItem,
   Avatar,
+  IconButton,
 } from "@material-tailwind/react";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import {  ShowCard } from "@/components";
 import Image from "next/image";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { useDispatch } from "react-redux";
 function StarIcon() {
   return (
     <svg
@@ -36,14 +40,18 @@ function StarIcon() {
     </svg>
   );
 }
-export function ProductDetail({title, url, price, description ,allFile}) {
+export function ProductDetail({title, url, price, description ,allFile, cartData}) {
   const [activeButton, setActiveButton] = useState(null);
-
+  const dispatch = useDispatch()
   // Function to handle button click and set the active button
   const handleButtonClick = (buttonIndex) => {
     setActiveButton(buttonIndex);
   };
- 
+ // add to cart function 
+ const handleAddToCart = (product) => {
+  console.log(product)
+  dispatch(addToCart(product));
+};
 
   const [active, setActive] = React.useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -112,21 +120,21 @@ export function ProductDetail({title, url, price, description ,allFile}) {
                   </Typography>
                   <Button
                     onClick={() => handleButtonClick(1)}
-                    className={`${activeButton === 1 ? 'bg-secondary text-black' : 'bg-transparent text-gray-700'
+                    className={`${activeButton === 1 ? 'bg-secondary text-white' : 'bg-transparent text-gray-700'
                       }`}
                   >
                     sm
                   </Button>
                   <Button
                     onClick={() => handleButtonClick(2)}
-                    className={`${activeButton === 2 ? 'bg-secondary text-black' : 'bg-transparent text-gray-700'
+                    className={`${activeButton === 2 ? 'bg-secondary text-white' : 'bg-transparent text-gray-700'
                       }`}
                   >
                     md
                   </Button>
                   <Button
                     onClick={() => handleButtonClick(3)}
-                    className={`${activeButton === 3 ? 'bg-secondary text-black' : 'bg-transparent text-gray-700'
+                    className={`${activeButton === 3 ? 'bg-secondary text-white' : 'bg-transparent text-gray-700'
                       }`}
                   >
                     lg
@@ -134,12 +142,40 @@ export function ProductDetail({title, url, price, description ,allFile}) {
 
                 </ButtonGroup>
               </span>
+              <span className="flex items-center justify-between">
               <span className=" border-2 flex w-fit  gap-6 items-center my-4">
                 <FaPlus className="bg-secondary w-8 h-8 text-white py-2 cursor-pointer" />
                 <span>5</span>
                 <FaMinus className="bg-secondary w-8 h-8 text-white py-2 cursor-pointer" />
               </span>
-              <span></span>
+              <Button
+          size="sm"
+          className="opacity-100  w-fit h-8 bg-secondary text-white flex gap-2  p-2"
+          onClick={() => handleAddToCart(cartData)}
+        >
+          Add to Cart <MdOutlineShoppingCart className="h-4 w-4 text-white"/>
+        </Button>
+              <span>
+             
+          {/* Add to Cart */}
+          <IconButton
+          size="sm"
+          color="red"
+          variant="text"
+          className="!absolute top-4 right-4 rounded-full"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-6 w-6"
+          >
+            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+          </svg>
+        </IconButton>
+        
+              </span>
+              </span>
               <Card className="w-full border-2 shadow-none">
                 <List>
                   <ListItem>
