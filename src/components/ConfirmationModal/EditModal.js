@@ -14,7 +14,7 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { RxCross2 } from "react-icons/rx";
-export function EditProduct({openModal,onClose,onSubmit, data}) {
+export function EditProductModal({openModal,onClose,submitHua, data}) {
     const [formData, setFormData] = useState({
         productname: "",
         description: "",
@@ -41,8 +41,8 @@ export function EditProduct({openModal,onClose,onSubmit, data}) {
     };
     const handleSubmit = (e) => {
       e.preventDefault();
-      onSubmit(formData);
-      console.log("Form data: -->>>", formData);
+      submitHua(formData);
+      // console.log("Form data: -->>>", formData);
       onClose()
     };
      
@@ -55,14 +55,14 @@ export function EditProduct({openModal,onClose,onSubmit, data}) {
   return (
     <>
     
-      <Dialog size="sm" open={openModal} handler={onSubmit} className="p-4">
+      <Dialog size="sm" open={openModal} handler={submitHua} className="p-4">
         <form onSubmit={handleSubmit}>
         <DialogHeader className="relative m-0 block">
           <Typography variant="h4" color="blue-gray">
-            Manage Item
+            Edit Product
           </Typography>
           <Typography className="mt-1 font-normal text-gray-600">
-            Keep your records up-to-date and organized.
+          Edit product details to ensure they remain accurate and consistent.
           </Typography>
           <IconButton
             size="sm"
@@ -93,9 +93,7 @@ export function EditProduct({openModal,onClose,onSubmit, data}) {
           containerProps={{
             className: "!min-w-full",
           }}
-          labelProps={{
-            className: "hidden",
-          }}
+          
         />
       </div>
       <div>
@@ -115,9 +113,14 @@ export function EditProduct({openModal,onClose,onSubmit, data}) {
             className: "hidden",
           }}
         >
-          <Option value="Clothing">Clothing</Option>
-          <Option value="Fashion">Fashion</Option>
-          <Option value="Watches">Watches</Option>
+          <Option  value="airbuds">Airbuds</Option>
+          <Option  value="cloths">Cloths</Option>
+          <Option  value="glasses">Glasses</Option>
+          <Option  value="homeAccessories">Home Accessories</Option>
+          <Option  value="perfumes">Perfumes</Option>
+          <Option  value="heads">Heads</Option>
+          <Option  value="watch">Watch</Option>
+          <Option  value="jackets">Jackets</Option>
         </Select>
       </div>
       <div className="flex gap-4">
@@ -212,7 +215,7 @@ export function EditProduct({openModal,onClose,onSubmit, data}) {
       </div>
     </DialogBody>
         <DialogFooter>
-          <Button className="ml-auto" onClick={onSubmit}>
+          <Button className="ml-auto" type="submit">
             Add Product
           </Button>
         </DialogFooter>

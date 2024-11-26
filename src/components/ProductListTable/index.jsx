@@ -22,13 +22,13 @@ import {
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DeleteProduct, getAllProducts, getSingleProducts } from "@/app/API/response";
+import { DeleteProduct, EditProduct, getAllProducts, getSingleProducts } from "@/app/API/response";
 import { deleteProduct, getProductStart, getProductSuccess, updateProducts } from "@/app/Redux/Slices/allProducts";
 import { errorNotify,successNotify } from "../Toast";
 import {Loader} from "@/components";
 import { DefaultPagination } from "@/app/(dashboard)/products/Paginition";
 import DeleteProductModal from "../ConfirmationModal/confirmationModal";
-import { EditProduct } from "../ConfirmationModal/EditModal";
+import { EditProductModal } from "../ConfirmationModal/EditModal";
  
 const TABLE_HEAD = ["Image", "Price", "Category", "Brand", "Quantity", "Action"];
  
@@ -99,18 +99,16 @@ export function ProductTable() {
   const getAllProduct = async() => {
     const route = `/product?limit=${limit}&skip=${skip}`;  
     try {
-      dispatch(getProductStart())
+        dispatch(getProductStart())
         const response = await getAllProducts(route)
         // console.log("response--->>>>", response)
         dispatch(getProductSuccess(response.data))
-        
-        
       } catch (error) {
         errorNotify(error ||response.message)
       }
-  
   }
-  
+
+  //get all product with limit
   useEffect(()=>{
     getAllProduct()
   },[limit,skip])
@@ -132,7 +130,7 @@ const closeDelModal = () =>{
 //   delete  product Function
 const deleteProductFunc = async(id) => {
   const response = await DeleteProduct(`/product/${id}`)
-  console.log(response)
+  // console.log(response)
   dispatch(deleteProduct(id))
   successNotify("Product Delete Successfully")
   closeDelModal()
@@ -141,36 +139,38 @@ const deleteProductFunc = async(id) => {
   
   // Open  edit product modal
   const handleOpenModal = (productId) => {
-    setSelectedProduct(productId); // Set selected product data
+    setSelectedProduct(productId); 
     GetSingleProduct(productId)
-    seteditModal(true);          // Open modal
+    seteditModal(true);          
   };
 
 // close  edit product modal
   const handleCloseModal = () => {
-    seteditModal(false);         // Close modal
+    seteditModal(false);         
     setSelectedProduct(null);  
-    setSingleProduct(null)  // Clear selected product data
+    setSingleProduct(null)  
   };
 // get single product 
 const GetSingleProduct = async(id) =>{
   const response = await getSingleProducts(`/product/get/${id}`)
-  console.log("response",response)
+  // console.log("response",response)
   setSingleProduct(response.data)
 }
 const handleUpdateProduct = async (updatedData) => {
+  // console.log("updatedData",updatedData)
+  // console.log(`/product/${singleProduct?._id}`)
   try {
     const response = await EditProduct(`/product/${singleProduct?._id}`, updatedData);
     console.log("API Response:", response);
 
+    dispatch(updateProducts(response.data)); // Update the product in Redux
+    setSingleProduct(response.data); // Update local state
     if (response) {
-      dispatch(updateProducts(response.data)); // Update the product in Redux
-      setSingleProduct(response.data); // Update local state
       errorNotify("Product updated successfully!");
     }
   } catch (error) {
-    console.error("Error updating product:", error);
-    errorNotify("Failed to update the product!");
+    console.error("Error updating product:", error.message);
+    // errorNotify("Failed to update the product!");
   }
 };
   return (
@@ -218,6 +218,7 @@ const handleUpdateProduct = async (updatedData) => {
           </thead>
           <tbody>
             { isLoader ?<div className='w-full flex justify-center flex-col items-center pl-32 md:pl-80'><span><Loader/></span></div> :
+              allProducts.length < 1 ? <div className="flex justify-center items-center flex-col  min-h-72 md:pl-60 max-w-xl text-4xl ">Currently, there are no products available. Stay tuned—exciting new items are coming soon!</div> :
             allProducts.map(
               (item,index,) => {
                 const isLast = index === TABLE_ROWS.length - 1;
@@ -311,7 +312,7 @@ const handleUpdateProduct = async (updatedData) => {
       <DeleteProductModal openModal={DeleteModal}   onSubmit={() => deleteProductFunc(selectedId)} onClose={closeDelModal}/>
       {/* delete modal  */}
       {/* Edit modal  */}
-      <EditProduct openModal={editModal}  data={singleProduct}  onSubmit={handleUpdateProduct} onClose={handleCloseModal}/>
+      <EditProductModal openModal={editModal}  data={singleProduct}  submitHua={handleUpdateProduct} onClose={handleCloseModal}/>
 
       {/* Edit modal  */}
     

@@ -36,48 +36,30 @@ function StarIcon() {
     </svg>
   );
 }
-export function ProductDetail({title, url, price, description}) {
+export function ProductDetail({title, url, price, description ,allFile}) {
   const [activeButton, setActiveButton] = useState(null);
 
   // Function to handle button click and set the active button
   const handleButtonClick = (buttonIndex) => {
     setActiveButton(buttonIndex);
   };
-  const data = [
-    {
-      imgelink:
-        "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      imgelink:
-        "https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    },
-    {
-      imgelink:
-        "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
-    },
-    {
-      imgelink:
-        "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
-    },
-    {
-      imgelink:
-        "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
-    },
-  ];
+ 
 
-  const [active, setActive] = React.useState(
-    "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-  );
+  const [active, setActive] = React.useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const handleClick = (index,img) =>{
+    setActiveIndex(index)
+    setActive(img)
+  }
 
   return (
     <div>
       <div className="  flex flex-col lg:flex-row justify-around items-center gap-4 px-2 py-5">
         <div className=" ">
           <div className="flex h-full md:h-96 overflow-hidden justify-center">
-            <Image
+            <img
               className="h-full w-full max-w-2xl rounded-lg object-fit "
-              src={url}
+              src={active == null ? url : active}
               loading="lazy"
               alt="product image"
               width={480} 
@@ -86,13 +68,13 @@ export function ProductDetail({title, url, price, description}) {
             />
           </div>
           <div className="flex gap-3 w-full justify-center  py-2">
-            {data.map(({ imgelink }, index) => (
+            {allFile?.map((img, index) => (
               <div key={index}>
                 <img
-                  onClick={() => setActive(imgelink)}
-                  src={imgelink}
+                  onClick={() => handleClick(index,img)}
+                  src={img}
                   loading="lazy"
-                  className="h-20 max-w-full w-32 cursor-pointer rounded-lg object-cover object-center"
+                  className={activeIndex === index ?"border-2 border-black h-20 max-w-full w-32 cursor-pointer rounded-lg object-fit object-center":"h-20 max-w-full w-32 cursor-pointer rounded-lg object-fit object-center"}
                   alt="gallery-image"
                 />
               </div>
