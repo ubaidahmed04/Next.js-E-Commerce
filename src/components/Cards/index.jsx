@@ -29,6 +29,7 @@ function StarIcon() {
 
 export function CardDefault({ url, title, price1, price2, navigate,onAddToCart,quantity }) {
   return (
+    
     <Card className="min-w-full h-fit bg-blue-gray-50 max-w-[14rem] shadow-lg">
       <CardHeader floated={false} color="blue-gray " className="group relative">
         <Image

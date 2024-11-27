@@ -116,9 +116,9 @@ const Home = () => {
 
         <span className=''>
         <span className='justify-center sm:justify-around items-center flex flex-wrap '>
-        <UpperFooter title='Free And Fast Delivery' subtitle='free delivery for all orders over $140'/>
-        <UpperFooter title='24/7 customer service' subtitle='Friendly 24/7 customer support'/>
-        <UpperFooter title='money back guarantee ' subtitle='we return money within 30 days'/>
+        <UpperFooter title='Free And Fast Delivery' url={"https://img.freepik.com/free-vector/delivery-logo-template_23-2147880262.jpg?t=st=1732691469~exp=1732695069~hmac=f3a68f6d6005821ead01cc689f1d3a4f5a876a9ff25acb9f23b818978c2a4d85&w=826"} subtitle='free delivery for all orders over $140'/>
+        <UpperFooter title='24/7 Customer Service' url={"https://img.freepik.com/free-vector/twenty-four-service_1017-30335.jpg?t=st=1732691574~exp=1732695174~hmac=7e6abf67ca539da75d5809c3c8c5e8a3c4adf062c09fe18a35aab9690bdcdd28&w=826"} subtitle='Friendly 24/7 customer support'/>
+        <UpperFooter title='Money Back Guarantee' url={'https://img.freepik.com/free-vector/money-back-guarantee-sticker_1394-387.jpg?t=st=1732692160~exp=1732695760~hmac=bed0447b2ad138127761301f8d113b5764cb507e5a24453496ae8bf66879ef02&w=826'}  subtitle='we return money within 30 days'/>
         </span>
         </span>
       </div>

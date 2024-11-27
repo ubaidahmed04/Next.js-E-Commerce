@@ -27,19 +27,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "@/app/Redux/Slices/UserSlice";
 import Image from "next/image";
 import logoImg from '@/app/public/Images/logostore.png'
+import avatarImg from '@/app/public/Images/avatareco.png'
 const profileMenuItems = [
   {
     label: "My Profile",
     icon: FaRegCircleUser,
   },
-  {
-    label: "Edit Profile",
-    icon: FaRegEdit,
-  },
-  {
-    label: "Sign Out",
-    icon: BiLogOutCircle,
-  },
+  // {
+  //   label: "Edit Profile",
+  //   icon: FaRegEdit,
+  // },
+  // {
+  //   label: "Sign Out",
+  //   icon: BiLogOutCircle,
+  // },
 ];
 export function Appbar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -232,9 +233,7 @@ export function Appbar() {
                       className="myfont"
                       color={isLastItem ? "red" : "inherit"}
                     >
-                      <Link href={`${isLastItem}?'/login'?"/signup"`}>
                         {label}
-                      </Link>
                     </Typography>
                   </MenuItem>
                 );
@@ -284,7 +283,7 @@ export function Appbar() {
                 withBorder={true}
                 color="blue-gray"
                 className=" p-0.5"
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                src={"https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"}
               />
             </Button>
           </MenuHandler>

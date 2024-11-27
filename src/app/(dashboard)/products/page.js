@@ -30,7 +30,7 @@ const Product = () => {
     try {
       dispatch(getProductStart())
         const response = await getAllProducts(route)
-        console.log("response--->>>>", response)
+        // console.log("response--->>>>", response)
         dispatch(getProductSuccess(response.data))
       } catch (error) {
         errorNotify(error ||response.message)
@@ -54,7 +54,7 @@ const Product = () => {
     <Suspense fallback={<ProductSkeleton/>}>
      {   isLoader ?<div className='  w-full  mx-auto '><ProductSkeleton/></div>:
      
-        allProducts.length < 1 ? <div className="flex justify-center h-screen items-center max-w-4xl text-4xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Currently, there are no products available. Stay tuned—exciting new items are coming soon! <Link href={'/'}><Button className="bg-secondary text-white ">Back</Button></Link></div> :
+        allProducts.length < 1 ? <div className="flex justify-center  items-center min-h-screen  mx-auto max-w-4xl text-4xl flex-col  ">Currently, there are no products available. Stay tuned—exciting new items are coming soon! <Link href={'/'}><Button className="bg-secondary text-white ">Back</Button></Link></div> :
         <>
         <span className='w-full sm:w-1/2 flex ml-auto justify-end pt-4'>
         <Select

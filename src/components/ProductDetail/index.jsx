@@ -5,6 +5,7 @@ import Product2 from "@/app/public/Images/product2.png";
 import Product3 from "@/app/public/Images/product3.png";
 import Product4 from "@/app/public/Images/product4.png";
 import { addToCart } from '@/app/Redux/Slices/addToCart';
+import avatarImg from '@/app/public/Images/avatareco.png'
 
 import {
   Card,
@@ -181,7 +182,7 @@ export function ProductDetail({title, url, price, description ,allFile, cartData
                   <ListItem>
                     <span>
                       <Avatar
-                        src="https://docs.material-tailwind.com/img/face-2.jpg"
+                        src={"https://img.freepik.com/free-vector/delivery-logo-template_23-2147880262.jpg?t=st=1732691469~exp=1732695069~hmac=f3a68f6d6005821ead01cc689f1d3a4f5a876a9ff25acb9f23b818978c2a4d85&w=826"}
                         alt="avatar"
                         className="p-0.5"
                       />
@@ -194,7 +195,7 @@ export function ProductDetail({title, url, price, description ,allFile, cartData
                   <ListItem>
                     <span>
                       <Avatar
-                        src="https://docs.material-tailwind.com/img/face-2.jpg"
+                        src={"https://img.freepik.com/free-vector/cycle-circle-arrow_78370-7801.jpg?t=st=1732692464~exp=1732696064~hmac=7581b85d9a68572619df4abc015c0e9820cb4032fd36cb08539473658c661f98&w=826"}
                         alt="avatar"
                         className="p-0.5"
                       />

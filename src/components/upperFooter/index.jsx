@@ -8,13 +8,14 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import Image from "next/image";
- 
-export function UpperFooter({title,subtitle,customStyle,target}) {
+import avatarImg from '@/app/public/Images/avatareco.png'
+
+export function UpperFooter({title,subtitle,customStyle,target, url}) {
   return (
     <Card className={`mt-6 w-contain flex flex-col items-center justify-center   + ${customStyle}`}>
       <CardBody className="flex flex-col items-center justify-center">
       <Avatar
-        src="https://docs.material-tailwind.com/img/face-2.jpg"
+        src={url}
         alt="avatar"
         withBorder={true}
         className="p-0.5"

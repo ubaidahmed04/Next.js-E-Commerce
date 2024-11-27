@@ -15,17 +15,13 @@ import {
   IconButton,
   Tooltip,
   Input,
-  Dialog,
-  DialogHeader,
-  DialogFooter,
-  DialogBody,
+ 
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteProduct, EditProduct, getAllProducts, getSingleProducts } from "@/app/API/response";
 import { deleteProduct, getProductStart, getProductSuccess, updateProducts } from "@/app/Redux/Slices/allProducts";
 import { errorNotify,successNotify } from "../Toast";
-import {Loader} from "@/components";
 import { DefaultPagination } from "@/app/(dashboard)/products/Paginition";
 import DeleteProductModal from "../ConfirmationModal/confirmationModal";
 import { EditProductModal } from "../ConfirmationModal/EditModal";
@@ -326,12 +322,8 @@ const handleUpdateProduct = async (updatedData) => {
       </CardBody>
       {/* delete modal  */}
       <DeleteProductModal openModal={DeleteModal}   onSubmit={() => deleteProductFunc(selectedId)} onClose={closeDelModal}/>
-      {/* delete modal  */}
       {/* Edit modal  */}
       <EditProductModal openModal={editModal}  data={singleProduct}  submitHua={handleUpdateProduct} onClose={handleCloseModal}/>
-
-      {/* Edit modal  */}
-    
       
       <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
       <DefaultPagination nextPage={nextPage} previousPage={previousPage}/>
