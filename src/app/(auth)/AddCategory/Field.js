@@ -30,7 +30,6 @@ const InputFields = ({label, type, placeholder, name }) => {
           <option  value="heads">Heads</option>
           <option  value="watch">Watch</option>
           <option  value="jackets">Jackets</option>
-          <option  value="other">Others</option>
       </Field>
       </> 
     );

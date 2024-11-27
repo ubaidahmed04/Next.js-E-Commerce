@@ -21,6 +21,25 @@ export const AddProduct = async (route, data) => {
   }
 }
 
+export const AddCategory = async (route, data) => {
+  const config = {
+    url: URL + route,
+    method: "POST",
+    headers: {
+     "Content-Type": "application/json",
+    },
+    data: data,
+  };
+  try {
+    const res = await axios.request(config);
+    // console.log("res",res)
+    return res.data
+
+  } catch(err) {
+    return err.response.data
+  }
+}
+
 
 export const getAllProducts = async (route) => {
   const config = {

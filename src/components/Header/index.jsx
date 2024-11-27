@@ -115,9 +115,14 @@ export function Appbar() {
         onClick={()=>{setOpenNav(false)}}
 
       >
-        <Link href="/contact" className={`${pathName === '/contact' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
+        { !isUser ?
+          <Link href="/contact" className={`${pathName === '/contact' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
           Contact
+        </Link> :
+          <Link href="/AddCategory" className={`${pathName === '/AddCategory' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
+          Add Category
         </Link>
+        }
       </Typography>
       <Typography
         as="li"

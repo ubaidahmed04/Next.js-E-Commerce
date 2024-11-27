@@ -55,7 +55,7 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
   return (
     <>
     
-      <Dialog size="sm" open={openModal} handler={submitHua} className="p-2 overflow-y-auto relative max-h-[600px]  ">
+      <Dialog size="sm" open={openModal} handler={submitHua} className="p-2 overflow-y-auto relative h-[600px] md:h-fit ">
         <form onSubmit={handleSubmit}>
         <DialogHeader className="relative m-0 block">
           <Typography variant="h4" color="blue-gray">
@@ -105,7 +105,7 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
           Category
         </Typography>
         <Select
-          className="!w-full !border-[1.5px] !border-blue-gray-200/90 !border-t-blue-gray-200/90 bg-white text-gray-800 ring-4 ring-transparent placeholder:text-gray-600 focus:!border-primary focus:!border-t-blue-gray-900 group-hover:!border-primary"
+          className="!w-full !border-[1.5px] !border-blue-gray-200/90 !border-t-blue-gray-200/90 bg-white text-gray-800 ring-4 ring-transparent placeholder:text-gray-600 focus:!border-primary focus:!border-t-blue-gray-900 group-hover:!border-primary h-40 overflow-y-auto"
           placeholder="Select Category"
           value={formData?.category}
           onChange={(value) => handleCategoryChange(value)}
@@ -121,6 +121,7 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
           <Option  value="heads">Heads</Option>
           <Option  value="watch">Watch</Option>
           <Option  value="jackets">Jackets</Option>
+          <Option  value="other">Others</Option>
         </Select>
       </div>
       <div className="flex gap-4">
