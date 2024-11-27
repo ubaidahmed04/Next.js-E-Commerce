@@ -11,6 +11,8 @@ import { useDispatch } from "react-redux";
 import { errorNotify, successNotify } from "@/components/Toast";
 import { ToastContainer } from "react-toastify";
 import { motion } from 'framer-motion'
+import Image from "next/image";
+import logoImg from '@/app/public/Images/logostore.png'
 
 const SignIn = () => {
   const router = useRouter()
@@ -71,6 +73,7 @@ const SignIn = () => {
         transition={{ duration: 0.4, delay: 0 }}
         className="flex flex-wrap items-center justify-center w-full h-full ">
           <div className="hidden w-full xl:block xl:w-1/2">
+          
             <div className="px-26 py-17.5 text-center">
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                 SignIn To ShopNest
@@ -204,6 +207,13 @@ const SignIn = () => {
           </div>
 
           <div className="w-full flex items-center flex-col gap-8 rounded-r-lg border-stroke bg-slate-300 dark:border-strokedark xl:w-1/2 xl:border-l-2">
+          <Image
+          height={50}
+          width={50}
+          src={logoImg}
+          alt="Logo"
+          className="h-20 w-full  object-contain xl:hidden "
+        />
           <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                 Sign In to Portal
               </h2>
