@@ -55,7 +55,7 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
   return (
     <>
     
-      <Dialog size="sm" open={openModal} handler={submitHua} className="p-4">
+      <Dialog size="sm" open={openModal} handler={submitHua} className="p-2 overflow-y-auto relative max-h-[600px]  ">
         <form onSubmit={handleSubmit}>
         <DialogHeader className="relative m-0 block">
           <Typography variant="h4" color="blue-gray">
@@ -73,7 +73,7 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
             <RxCross2 className="h-4 w-4 stroke-2" />
           </IconButton>
         </DialogHeader>
-        <DialogBody className="space-y-4 pb-6">
+        <DialogBody className="space-y-2 pb-3">
       <div>
         <Typography
           variant="small"
@@ -213,12 +213,11 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
           }}
         />
       </div>
-    </DialogBody>
-        <DialogFooter>
-          <Button className="ml-auto" type="submit">
+          <Button className="ml-auto flex justify-end bg-secondary text-white" type="submit">
             Add Product
           </Button>
-        </DialogFooter>
+
+    </DialogBody>
         </form>
       </Dialog>
     </>

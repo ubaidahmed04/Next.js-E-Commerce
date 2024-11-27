@@ -66,6 +66,7 @@ export function Appbar() {
         variant="small"
         color="blue-gray"
         className="p-1 myfont"
+        onClick={()=>{setOpenNav(false)}}
       >
         <Link href="/" className={`${pathName === '/' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
           Home
@@ -76,6 +77,8 @@ export function Appbar() {
         variant="small"
         color="blue-gray"
         className="p-1 myfont"
+        onClick={()=>{setOpenNav(false)}}
+
       >
         { !isUser ?
           <Link href="/products" className={`${pathName === '/products' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
@@ -91,6 +94,8 @@ export function Appbar() {
         variant="small"
         color="blue-gray"
         className=" myfont"
+        onClick={()=>{setOpenNav(false)}}
+
       >
        { !isUser ?
           <Link href="/about" className={`${pathName === '/about' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
@@ -106,6 +111,8 @@ export function Appbar() {
         variant="small"
         color="blue-gray"
         className="p-1 myfont"
+        onClick={()=>{setOpenNav(false)}}
+
       >
         <Link href="/contact" className={`${pathName === '/contact' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
           Contact
@@ -116,6 +123,8 @@ export function Appbar() {
         variant="small"
         color="blue-gray"
         className="p-1 myfont"
+        onClick={()=>{setOpenNav(false)}}
+
       >
         {!isUser ? (
   <Link
@@ -152,13 +161,7 @@ export function Appbar() {
   return (
     <Navbar className="sticky top-0 z-10 h-max max-w-full bg-gray-100 rounded-none px-2 py-2 lg:px-8 lg:py-4">
       <div className="flex items-center justify-between text-blue-gray-900 ">
-        {/* <Typography
-          as="a"
-          href="/"
-          className="mr-1 sm:mr-4 cursor-pointer  text-sm md:text-xl font-bold py-1.5 sm:myfontbold"
-        >
-          ShopWeb
-        </Typography> */}
+       
         <Link href="/">
         <Image
           height={50}
