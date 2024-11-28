@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import img2 from "@/app/public/Images/herosection.png";
 import { Button } from '@material-tailwind/react';
+import Link from 'next/link';
 
  export const Announcement = () => {
   return (
@@ -44,9 +45,11 @@ import { Button } from '@material-tailwind/react';
 
         </span>
         <span>
+          <Link href={'/product'}>
           <Button className='bg-green'>
             Buy Now
           </Button>
+          </Link>
         </span>
       </span>
     </div>
