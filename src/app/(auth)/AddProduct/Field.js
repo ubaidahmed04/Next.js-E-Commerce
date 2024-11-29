@@ -1,8 +1,11 @@
 import { Input, Typography } from '@material-tailwind/react'
-import React from 'react'
+import React  from 'react'
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useSelector } from 'react-redux';
 
-const InputFields = ({label, type, placeholder, name }) => {
+const InputFields = ({label, type, placeholder, name ,}) => {
+  const { getCategory } = useSelector((state) => state.category);
+
   if (type === 'select') {
     return (
       <>
@@ -21,16 +24,13 @@ const InputFields = ({label, type, placeholder, name }) => {
         as="select"
         className="!w-full !px-3 !py-3 !bg-white !border border-blue-gray-300 rounded-md shadow-sm focus:!outline-none focus:!ring-2  !transition duration-200 ease-in-out !text-gray-700"
       >
-          <option  value="">Select a category</option>
-          <option  value="airbuds">Airbuds</option>
-          <option  value="cloths">Cloths</option>
-          <option  value="glasses">Glasses</option>
-          <option  value="homeAccessories">Home Accessories</option>
-          <option  value="perfumes">Perfumes</option>
-          <option  value="heads">Heads</option>
-          <option  value="watch">Watch</option>
-          <option  value="jackets">Jackets</option>
-          <option  value="other">Others</option>
+        <option  >Select a category</option>
+        {
+          getCategory?.map((opt ,idx)=>(
+            <option key={idx} value={opt?._id.toString()} >{opt?.categoryName}</option>
+          ))
+        }
+          
       </Field>
       </> 
     );
@@ -54,9 +54,7 @@ const InputFields = ({label, type, placeholder, name }) => {
               name={name}
               placeholder={placeholder}
               className="!w-full placeholder:!opacity-100 focus:!border-t-primary  !border-t-blue-gray-200"
-              labelProps={{
-                className: "hidden",
-              }}
+              
             />
 
           </div>

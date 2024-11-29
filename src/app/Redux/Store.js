@@ -3,7 +3,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import UserReducer from './Slices/UserSlice';
 import allProductReducer from './Slices/allProducts'
 import AddCartReducer from './Slices/addToCart'
-// import CandidateReducer from './GetCareerDetails'
+import categoryReducer from './Slices/category'
 import {
   persistStore,
   persistReducer,
@@ -26,6 +26,7 @@ const rootReducer = combineReducers({
   currUser: UserReducer,
   cart: AddCartReducer,
   allproducts: allProductReducer,
+  category: categoryReducer,
 });
 
 // Apply persistReducer only to 'user' and 'cart' in rootReducer

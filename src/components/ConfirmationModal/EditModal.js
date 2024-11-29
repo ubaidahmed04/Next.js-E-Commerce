@@ -14,7 +14,11 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { RxCross2 } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategorySuccess } from "@/app/Redux/Slices/category";
+import { getAllProducts } from "@/app/API/response";
 export function EditProductModal({openModal,onClose,submitHua, data}) {
+  const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         productname: "",
         description: "",
@@ -23,14 +27,14 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
         category: "",
         quantity: "",
       });
-      // console.log("formData",formData)
+      console.log("formData",formData)
     useEffect(()=>{
         setFormData({
          productname: data?.productname || "",
          description: data?.description || "",
          brand: data?.brand || "",
          price: data?.price || "",
-         category: data?.category || "",
+         category: data?.category?.categoryName || "",
          quantity: data?.quantity || "",
         
         })
@@ -42,7 +46,6 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
     const handleSubmit = (e) => {
       e.preventDefault();
       submitHua(formData);
-      // console.log("Form data: -->>>", formData);
       onClose()
     };
      
@@ -52,6 +55,25 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
           category: value,
         }));
       };
+      // get category 
+      // get all  category 
+  const GetAllCategory = async () => {
+    const route = '/category'  
+    try {
+      const response = await getAllProducts(route)
+      console.log("response--->>>>", response.data)
+      dispatch(getCategorySuccess(response?.data))
+    } catch (error) {
+      console.log(error)
+      // errorNotify(error ||response.message)
+    }
+  }
+  const { getCategory } = useSelector((state) => state.category);
+  console.log("getCategory",getCategory)
+
+  useEffect(()=>{
+    GetAllCategory()
+  },[])
   return (
     <>
     
@@ -96,34 +118,7 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
           
         />
       </div>
-      <div>
-        <Typography
-          variant="small"
-          color="blue-gray"
-          className="mb-2 text-left font-medium"
-        >
-          Category
-        </Typography>
-        <Select
-          className="!w-full !border-[1.5px] !border-blue-gray-200/90 !border-t-blue-gray-200/90 bg-white text-gray-800 ring-4 ring-transparent placeholder:text-gray-600 focus:!border-primary focus:!border-t-blue-gray-900 group-hover:!border-primary h-40 overflow-y-auto"
-          placeholder="Select Category"
-          value={formData?.category}
-          onChange={(value) => handleCategoryChange(value)}
-          labelProps={{
-            className: "hidden",
-          }}
-        >
-          <Option  value="airbuds">Airbuds</Option>
-          <Option  value="cloths">Cloths</Option>
-          <Option  value="glasses">Glasses</Option>
-          <Option  value="homeAccessories">Home Accessories</Option>
-          <Option  value="perfumes">Perfumes</Option>
-          <Option  value="heads">Heads</Option>
-          <Option  value="watch">Watch</Option>
-          <Option  value="jackets">Jackets</Option>
-          <Option  value="other">Others</Option>
-        </Select>
-      </div>
+     
       <div className="flex gap-4">
         <div className="w-full">
           <Typography
@@ -193,6 +188,30 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
             
           />
         </div>
+      </div>
+      <div>
+        <Typography
+          variant="small"
+          color="blue-gray"
+          className="mb-2 text-left font-medium"
+        >
+          Category
+        </Typography>
+        <Select
+          className="text-black "
+          label="Select Category"
+          value={formData?.category}
+          onChange={(value) => handleCategoryChange(value)}
+          
+        >
+         {
+          getCategory.length == 0 ? <option>No Category Avalaible</option> :
+          getCategory?.map((opt ,idx)=>(
+            <Option className="" key={idx} value={`${opt?._id.toString()}`} >{opt?.categoryName|| "No category Avalaible"}</Option>
+          ))
+        }  
+        
+        </Select>
       </div>
       <div>
         <Typography

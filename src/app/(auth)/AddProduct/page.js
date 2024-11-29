@@ -15,12 +15,13 @@ import Image from "next/image";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from 'yup';
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import { AddProduct } from "@/app/API/response";
+import { AddProduct, getAllProducts } from "@/app/API/response";
 import { errorNotify, successNotify } from "@/components/Toast";
 import { ToastContainer } from "react-toastify";
 import { motion } from 'framer-motion'
+import { getCategorySuccess } from "@/app/Redux/Slices/category";
 
 
 export function CryptoLogin() {
@@ -28,7 +29,7 @@ export function CryptoLogin() {
   const router = useRouter()
   const refFile = useRef([])
   const [fileName, setFileNames] = useState([]);
-
+  const dispatch = useDispatch()
   const initialValues = {
     productname: "",
     description: "",
@@ -61,7 +62,6 @@ export function CryptoLogin() {
   });
   const handleSubmit = async (values, { resetForm }) => {
     const route = '/product/add'
-
     const data = new FormData()
     data.append("productname", values.productname)
     data.append("description", values.description)
@@ -77,11 +77,15 @@ export function CryptoLogin() {
     try {
       
       const response = await AddProduct(route, data)
-      // console.log("response--->>>>", response.message)
-      successNotify(response.message)
-      setFileNames([])
-      resetForm()
-      
+      console.log("response--->>>>", response)
+      if(response.status){
+        successNotify(response.message)
+        setFileNames([])
+        resetForm()
+      }else{
+        errorNotify(response.message)
+
+      }
     } catch (error) {
       errorNotify(error ||response.message)
     }
@@ -106,6 +110,23 @@ export function CryptoLogin() {
       router.push('/');
     }
   }, [isUser, router]);
+  
+  // get all  category 
+  const GetCategory = async () => {
+    const route = '/category'  
+    try {
+      const response = await getAllProducts(route)
+      console.log("response--->>>>", response.data)
+      dispatch(getCategorySuccess(response?.data))
+    } catch (error) {
+      console.log(error)
+      // errorNotify(error ||response.message)
+    }
+  }
+
+  useEffect(()=>{
+    GetCategory()
+  },[])
   return (
     <motion.div
     initial={{ opacity: 0, y: 100 }}

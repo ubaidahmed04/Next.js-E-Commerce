@@ -45,7 +45,7 @@ import Link from 'next/link';
 
         </span>
         <span>
-          <Link href={'/product'}>
+          <Link href={'/products'}>
           <Button className='bg-green'>
             Buy Now
           </Button>

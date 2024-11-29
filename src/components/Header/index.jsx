@@ -26,7 +26,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "@/app/Redux/Slices/UserSlice";
 import Image from "next/image";
-import logoImg from '@/app/public/Images/newStoreLogo.png'
+import logoImg from '@/app/public/Images/newLogo.png'
 
 const profileMenuItems = [
   {
@@ -170,11 +170,11 @@ export function Appbar() {
        
         <Link href="/">
         <Image
-          height={100}
-          width={100}
+          height={60}
+          width={60}
           src={logoImg}
           alt="Logo"
-          className="h-24 w-full  bg-red-400 object-contain"
+          className="h-3/4  w-full  object-contain"
         />
         </Link>
         <div className="mr-4 hidden lg:block">{navList}</div>

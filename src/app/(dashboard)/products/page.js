@@ -10,6 +10,7 @@ import { addToCart } from '@/app/Redux/Slices/addToCart';
 import { DefaultPagination } from './Paginition';
 import { Option, Select ,Button} from '@material-tailwind/react';
 import Link from 'next/link';
+import { getCategorySuccess } from '@/app/Redux/Slices/category';
 
 const Product = () => {
   const [limit, setLimit] = useState(10);
@@ -48,32 +49,44 @@ const Product = () => {
   }
   useEffect(()=>{
     getAllProduct()
-  },[limit,skip,category ])
+  },[ limit, skip, category])
+// get all  category 
+const { getCategory } = useSelector((state) => state.category);
+console.log("getCategory",getCategory)
+const GetCategory = async () => {
+  const route = '/category'  
+  try {
+    const response = await getAllProducts(route)
+    // console.log("response--->>>>", response.data)
+    dispatch(getCategorySuccess(response?.data))
+  } catch (error) {
+    console.log(error)
+    // errorNotify(error ||response.message)
+  }
+}
+useEffect(()=>{
+  GetCategory()
+},[])
 
   return (
     <Suspense fallback={<ProductSkeleton/>}>
      {   isLoader ?<div className='  w-full  mx-auto '><ProductSkeleton/></div>:
      
-        allProducts.length < 1 ? <div className="flex justify-center  items-center min-h-screen  mx-auto max-w-4xl text-4xl flex-col  ">Currently, there are no products available. Stay tuned—exciting new items are coming soon! <Link href={'/'}><Button className="bg-secondary text-white ">Back</Button></Link></div> :
+        allProducts?.length < 1 ? <div className="flex justify-center  items-center min-h-screen  mx-auto max-w-4xl text-4xl flex-col  ">Currently, there are no products available. Stay tuned—exciting new items are coming soon! <Link href={'/'}><Button className="bg-secondary text-white ">Back</Button></Link></div> :
         <>
         <span className='w-full sm:w-1/2 flex ml-auto justify-end pt-4'>
         <Select
           className="w-full !border-[1.5px]  !border-blue-gray-200/90 !border-t-blue-gray-200/90 bg-white text-gray-800 ring-4 ring-transparent placeholder:text-gray-600 focus:!border-primary focus:!border-t-blue-gray-900 group-hover:!border-primary"
-          placeholder="Select Category"
+          label="Filter Product By Category"
           value={category}
           onChange={(value) => handleCategoryChange(value)}
         >
-
-          <Option  >Select Category </Option>
-          <Option  value="">All</Option>
-          <Option  value="airbuds">Airbuds</Option>
-          <Option  value="cloths">Cloths</Option>
-          <Option  value="glasses">Glasses</Option>
-          <Option  value="homeAccessories">Home Accessories</Option>
-          <Option  value="perfumes">Perfumes</Option>
-          <Option  value="heads">Heads</Option>
-          <Option  value="watch">Watch</Option>
-          <Option  value="jackets">Jackets</Option>
+           {
+          getCategory?.map((opt ,idx)=>(
+            <Option key={idx} value={`${opt?._id.toString()}`} >{opt?.categoryName|| "No category Avalaible"}</Option>
+          ))
+        }
+          
         </Select>
         </span>
         <div className='font grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-4 pb-10 pt-4 flex-grow max-w-screen-xl  w-full min-h-screen max-h-full '>

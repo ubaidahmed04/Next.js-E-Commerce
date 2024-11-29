@@ -12,7 +12,7 @@ import avatarImg from '@/app/public/Images/avatareco.png'
 
 export function UpperFooter({title,subtitle,customStyle,target, url}) {
   return (
-    <Card className={`mt-6 w-contain flex flex-col items-center justify-center   + ${customStyle}`}>
+    <Card className={`mt-6 w-contain flex flex-col items-center justify-center  hover:scale-105 hover:cursor-pointer + ${customStyle}`}>
       <CardBody className="flex flex-col items-center justify-center">
       <Avatar
         src={url}

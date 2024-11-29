@@ -153,7 +153,7 @@ const GetSingleProduct = async(id) =>{
   setSingleProduct(response.data)
 }
 const handleUpdateProduct = async (updatedData) => {
-  // console.log("updatedData",updatedData)
+  console.log("updatedData",updatedData)
   // console.log(`/product/${singleProduct?._id}`)
   try {
     const response = await EditProduct(`/product/${singleProduct?._id}`, updatedData);
@@ -169,6 +169,7 @@ const handleUpdateProduct = async (updatedData) => {
     // errorNotify("Failed to update the product!");
   }
 };
+console.log("allProducts",allProducts)
   return (
     <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -230,8 +231,8 @@ const handleUpdateProduct = async (updatedData) => {
             ))
             // <div className='w-full flex justify-center flex-col items-center pl-32 md:pl-80'><span><Loader/></span></div>
              :
-              allProducts.length < 1 ? <div className="flex justify-center items-center flex-col  min-h-72 md:pl-60 max-w-xl text-4xl ">Currently, there are no products available. Stay tuned—exciting new items are coming soon!</div> :
-            allProducts.map(
+              allProducts?.length < 1 ? <div className="flex justify-center items-center flex-col  min-h-72 md:pl-60 max-w-xl text-4xl ">Currently, there are no products available. Stay tuned—exciting new items are coming soon!</div> :
+            allProducts?.map(
               (item,index,) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast
@@ -272,7 +273,7 @@ const handleUpdateProduct = async (updatedData) => {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {item?.category}
+                        {item?.category?.categoryName}
                       </Typography>
                     </td>
                     <td className={classes}>
