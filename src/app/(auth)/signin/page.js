@@ -12,7 +12,7 @@ import { errorNotify, successNotify } from "@/components/Toast";
 import { ToastContainer } from "react-toastify";
 import { motion } from 'framer-motion'
 import Image from "next/image";
-import logoImg from '@/app/public/Images/logostore.png'
+import logoImg from '@/app/public/Images/newLogo.png'
 
 const SignIn = () => {
   const router = useRouter()
