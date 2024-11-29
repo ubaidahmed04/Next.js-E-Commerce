@@ -1,4 +1,4 @@
-import { Input, Typography } from '@material-tailwind/react'
+import { Input, Typography,Option } from '@material-tailwind/react'
 import React  from 'react'
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useSelector } from 'react-redux';
@@ -26,7 +26,7 @@ const InputFields = ({label, type, placeholder, name ,}) => {
       >
         <option  >Select a category</option>
         {
-          getCategory.length == 0 ? <option>No Category Avalaible</option> :
+          getCategory.length == 0 ? <Option>No Category Avalaible</Option> :
           getCategory?.map((opt ,idx)=>(
             <Option className="" key={idx} value={`${opt?._id.toString()}`} >{opt?.categoryName|| "No category Avalaible"}</Option>
           ))
