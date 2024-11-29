@@ -26,10 +26,11 @@ const InputFields = ({label, type, placeholder, name ,}) => {
       >
         <option  >Select a category</option>
         {
+          getCategory.length == 0 ? <option>No Category Avalaible</option> :
           getCategory?.map((opt ,idx)=>(
-            <option key={idx} value={opt?._id.toString()} >{opt?.categoryName}</option>
+            <Option className="" key={idx} value={`${opt?._id.toString()}`} >{opt?.categoryName|| "No category Avalaible"}</Option>
           ))
-        }
+        }  
           
       </Field>
       </> 

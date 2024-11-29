@@ -82,10 +82,11 @@ useEffect(()=>{
           onChange={(value) => handleCategoryChange(value)}
         >
            {
+          getCategory.length == 0 ? <option>No Category Avalaible</option> :
           getCategory?.map((opt ,idx)=>(
-            <Option key={idx} value={`${opt?._id.toString()}`} >{opt?.categoryName|| "No category Avalaible"}</Option>
+            <Option className="" key={idx} value={`${opt?._id.toString()}`} >{opt?.categoryName|| "No category Avalaible"}</Option>
           ))
-        }
+        }  
           
         </Select>
         </span>
