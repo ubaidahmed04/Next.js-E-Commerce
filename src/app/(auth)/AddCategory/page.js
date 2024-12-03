@@ -1,5 +1,4 @@
 "use client"
-import React, { useEffect, useRef, useState } from "react";
 // @components
 import {
   Card,
@@ -10,8 +9,6 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import FieldInput from "./Field";
-import upload from '@/app/public/Images/upload.png'
-import Image from "next/image";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from 'yup';
 import Link from "next/link";

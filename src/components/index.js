@@ -17,6 +17,7 @@ import { AddCart } from './AddtoCart'
 import {Loader} from './Loading'
 import {ShowCard} from './ShowCard'
 import {ProductTable} from './ProductListTable'
+import ButtonComp from './Button'
 export {
     Appbar,
     Caroseul,
@@ -36,6 +37,7 @@ export {
     AddCart,
     Loader,
     ShowCard,
-    ProductTable
+    ProductTable,
+    ButtonComp
 
 }

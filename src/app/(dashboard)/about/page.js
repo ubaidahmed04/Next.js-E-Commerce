@@ -1,4 +1,3 @@
-import { Varieties } from '@/components'
 import React, { Suspense } from 'react'
 import {AboutSection}  from '@/components'
 import AboutSectionSkeleton from './AboutSkeleton'

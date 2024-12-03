@@ -1,6 +1,8 @@
-"use client"
-import { CarouselDefault, Title, Category, ProductCard,Announcement,UpperFooter, } from '@/components'
-import React, { lazy, Suspense, useEffect, useRef, useState } from 'react'
+// "use client"
+import { CarouselDefault, Title, Category, ProductCard,Announcement,UpperFooter,ShowCard ,Arrival ,ButtonComp} from '@/components'
+import Link from 'next/link';
+// import React, { lazy, Suspense, useEffect, useRef, useState } from 'react'
+// import React, { lazy,  } from 'react'
 import Category1 from "@/app/public/Images/Category1.png";
 import Category2 from "@/app/public/Images/category2.png"
 import Category3 from "@/app/public/Images/Category3.png";
@@ -17,41 +19,40 @@ import Product9 from "@/app/public/Images/product9.png";
 import Product10 from "@/app/public/Images/product10.png";
 import Product11 from "@/app/public/Images/product11.png";
 import Category6 from "@/app/public/Images/Category6.png";
-import { Button } from '@material-tailwind/react';
-import Link from 'next/link';
-import { DashboardSkeleton } from './dashboardSkeleton';
-import { useSelector } from 'react-redux';
-import { useInView, motion } from 'framer-motion';
+// import { Button } from '@material-tailwind/react';
+// import { DashboardSkeleton } from './dashboardSkeleton';
+// import { useSelector } from 'react-redux';
+// import { useInView, motion } from 'framer-motion';
 
 // const CardDefault = lazy(() => import('@/components/Cards').then(module => ({ default: module.CardDefault })));
-const ShowCard = lazy(() => import('@/components/ShowCard').then(module => ({ default: module.ShowCard })));
-const Arrival = lazy(() => import('@/components/Arrival').then(module => ({ default: module.Arrival })));
+// const ShowCard = lazy(() => import('@/components/ShowCard').then(module => ({ default: module.ShowCard })));
+// const Arrival = lazy(() => import('@/components/Arrival').then(module => ({ default: module.Arrival })));
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
-  const {isUser} = useSelector((state)=>state.currUser)
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 10);
+  // const [loading, setLoading] = useState(true);
+  // const {isUser} = useSelector((state)=>state.currUser)
+  // const ref = useRef(null);
+  // const isInView = useInView(ref, { once: true });
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 10);
 
-    return () => clearTimeout(timeout);
-  }, []);
+  //   return () => clearTimeout(timeout);
+  // }, []);
 
-  if (loading) {
-    return <DashboardSkeleton />;
-  }
+  // if (loading) {
+  //   return <DashboardSkeleton />;
+  // }
   return (
     <div className='py-4'>
 
-      <motion.div 
+      {/* <motion.div 
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0 }} >
+      </motion.div> */}
       <CarouselDefault />
-      </motion.div>
 
       <div className='px-4'>
         <Title title='Todays' Subtitle='Flash Sales' />
@@ -106,9 +107,7 @@ const Home = () => {
         </span>
         <span className='py-5 flex items-center justify-center'>
           <Link href={'/products'}>
-          <Button size="lg" className='text-center bg-secondary'>
-            View All Products
-          </Button>
+          <ButtonComp text={'View All Products'}/>
           </Link>
         </span>
         <Title title='Featured' Subtitle='New Arrivals' />
