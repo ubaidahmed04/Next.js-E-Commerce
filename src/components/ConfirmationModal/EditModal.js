@@ -27,29 +27,35 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
         category: "",
         quantity: "",
       });
-      console.log("formData",formData)
+      console.log("get formData fetch  ",formData?.category)
     useEffect(()=>{
         setFormData({
          productname: data?.productname || "",
          description: data?.description || "",
          brand: data?.brand || "",
          price: data?.price || "",
-         category: data?.category?.categoryName || "",
+         category: data?.category?._id || "",
          quantity: data?.quantity || "",
         
         })
     },[data]);
+   
     const handleInputChange = (e) => {
       const { name, value } = e.target;
       setFormData((prevData) => ({ ...prevData, [name]: value }));
+      
     };
     const handleSubmit = (e) => {
       e.preventDefault();
       submitHua(formData);
+      console.log("formData submit time ",formData)
       onClose()
     };
-     
+    const { getCategory = [] } = useSelector((state) => state.category);
+    // console.log("getCategory",getCategory)
+   
       const handleCategoryChange = (value) => {
+        console.log(value)
         setFormData((prevData) => ({
           ...prevData,
           category: value,
@@ -61,16 +67,14 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
     const route = '/category'  
     try {
       const response = await getAllProducts(route)
-      console.log("response--->>>>", response.data)
+      // console.log("response--->>>>", response.data)
       dispatch(getCategorySuccess(response?.data))
     } catch (error) {
       console.log(error)
       // errorNotify(error ||response.message)
     }
   }
-  const { getCategory } = useSelector((state) => state.category);
-  console.log("getCategory",getCategory)
-
+  
   useEffect(()=>{
     GetAllCategory()
   },[])
@@ -195,22 +199,23 @@ export function EditProductModal({openModal,onClose,submitHua, data}) {
           color="blue-gray"
           className="mb-2 text-left font-medium"
         >
-          Category
+         Category
         </Typography>
         <Select
           className="text-black "
           label="Select Category"
           value={formData?.category}
           onChange={(value) => handleCategoryChange(value)}
-          
         >
          {
           getCategory.length == 0 ? <option>No Category Avalaible</option> :
           getCategory?.map((opt ,idx)=>(
-            <Option className="" key={idx} value={`${opt?._id.toString()}`} >{opt?.categoryName|| "No category Avalaible"}</Option>
-          ))
+            <Option className="" key={idx} value={opt?._id} >
+              { opt?.categoryName || "No category Avalaible"}
+            </Option>
+          )
+        )
         }  
-        
         </Select>
       </div>
       <div>

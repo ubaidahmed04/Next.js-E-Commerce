@@ -119,11 +119,27 @@ export function Appbar() {
           <Link href="/contact" className={`${pathName === '/contact' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
           Contact
         </Link> :
+
           <Link href="/AddCategory" className={`${pathName === '/AddCategory' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
           Add Category
         </Link>
         }
       </Typography>
+      {
+        isUser && <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 myfont"
+        onClick={()=>{setOpenNav(false)}}
+      >
+        <Link href="/orderList" className={`${pathName === '/orderList' ? 'text-secondary underline fontbold translate-x-1' : ''} flex items-center`}>
+          Show Orders
+        </Link>
+      </Typography>
+
+      }
+      
       <Typography
         as="li"
         variant="small"

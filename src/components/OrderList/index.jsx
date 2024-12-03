@@ -75,7 +75,7 @@ const TABLE_ROWS = [
   },
 ];
  
-export function ProductTable() {
+export function OrderList() {
 
   const dispatch = useDispatch()
   const {allProducts,isLoader} = useSelector((state)=> state.allproducts)
