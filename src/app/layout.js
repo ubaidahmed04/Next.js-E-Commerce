@@ -1,7 +1,7 @@
 import './globals.css'
 export const metadata = {
   title: 'Page Not Found',
-  description: 'Ubaid Ahmed Store - Your one-stop shop for high-quality products at affordable prices. Explore a wide range of electronics, fashion, home essentials, and more. Shop now and enjoy exclusive deals, fast delivery, and exceptional customer service!',
+  description: 'UA Store - Your one-stop shop for high-quality products at affordable prices. Explore a wide range of electronics, fashion, home essentials, and more. Shop now and enjoy exclusive deals, fast delivery, and exceptional customer service!',
 }
 export default function RootLayout({ children }) {
   return (

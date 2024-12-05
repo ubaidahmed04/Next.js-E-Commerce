@@ -17,3 +17,10 @@ const NotFoundPage = () => {
 };
 
 export default NotFoundPage;
+export  function generateMetadata (){
+  return{
+    title :"Page Not Found",
+    description: `UA Store - Your one-stop shop for high-quality products at affordable prices. Explore a wide range of electronics, fashion, home essentials, and more. Shop now and enjoy exclusive deals, fast delivery, and exceptional customer service!`
+  }
+}
+

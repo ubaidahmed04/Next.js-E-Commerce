@@ -127,3 +127,10 @@ const Home = () => {
 }
 
 export default Home
+
+export  function generateMetadata (){
+  return{
+    title :"UA Store",
+    description: `Discover the ultimate shopping experience at UbaidAhmed.Store! Explore a wide range of products with category-wise browsing, seamless Add to Cart functionality, and secure checkout. Designed with Next.js and powered by Redux Toolkit for state management, our platform ensures fast, efficient, and reliable service. Join us now and shop with ease!`
+  }
+}

@@ -24,7 +24,7 @@ import { motion } from 'framer-motion'
 import { getCategorySuccess } from "@/app/Redux/Slices/category";
 
 
-export function CryptoLogin() {
+export function AddProduct() {
   const { isUser } = useSelector((state) => state.currUser)
   const router = useRouter()
   const refFile = useRef([])
@@ -257,4 +257,10 @@ export function CryptoLogin() {
   );
 }
 
-export default CryptoLogin;
+export default AddProduct;
+export  function generateMetadata (){
+  return{
+    title :"Add Product",
+    description: `Welcome to Ubaid Ahmed Store! Discover a wide range of high-quality products across various categories. Learn about our mission to provide excellent service and seamless shopping experience. Explore our user-friendly platform, where you can easily add products to your cart, filter by categories, and enjoy secure online shopping with fast delivery. Our admin tools enable easy product management, while our customer-centric approach ensures satisfaction. Shop now at UbaidAhmed.store for the best deals and offers!`
+  }
+}
