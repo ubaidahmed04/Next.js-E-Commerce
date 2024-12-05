@@ -41,9 +41,9 @@ const ProductDetails = ({params }) => {
 
 export default ProductDetails
 
-export  function generateMetadata (){
-  return{
-    title :"Product Details",
-    description: `Explore a wide range of high-quality products at UbaidAhmed.store. Discover detailed product information, reviews, and easy shopping features. Add items to your cart, enjoy secure checkout, and get fast delivery. Shop now to enjoy exclusive offers and a seamless online shopping experience.`
-  }
-}
+// export  function generateMetadata (){
+//   return{
+//     title :"Product Details",
+//     description: `Explore a wide range of high-quality products at UbaidAhmed.store. Discover detailed product information, reviews, and easy shopping features. Add items to your cart, enjoy secure checkout, and get fast delivery. Shop now to enjoy exclusive offers and a seamless online shopping experience.`
+//   }
+// }
