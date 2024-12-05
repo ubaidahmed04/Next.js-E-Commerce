@@ -3,7 +3,9 @@ import SignInClientPage from './SignInClientPage'
 
 const Singin = () => {
   return (
-    <div><SignInClientPage/></div>
+    <>
+    <SignInClientPage/>
+    </>
   )
 }
 
